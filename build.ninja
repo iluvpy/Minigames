@@ -1,0 +1,18 @@
+cflags = -std=c++17 -Werror -Wall -g -DDebug -I./src/include/
+lflags = -lSDL2 
+cxx = clang++ 
+
+rule cc
+  command = $cxx -c $in -o $out $cflags
+rule lnk
+  command = $cxx $in -o $out $lflags 
+
+build obj/main.o: cc src/Main.cpp
+build obj/window.o: cc src/Window.cpp
+build obj/program.o: cc src/Program.cpp
+build obj/renderer.o: cc src/Renderer.cpp
+build obj/color.o: cc src/Color.cpp
+build obj/utils.o: cc src/Utils.cpp
+
+# build client file
+build client: lnk obj/main.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
