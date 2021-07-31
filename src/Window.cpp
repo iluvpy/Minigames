@@ -13,6 +13,21 @@ const SDL_Rect Window::getWindowRect() const {
     return m_rect;
 }
 
+
+bool Window::isOpen() const { 
+    return m_isOpen; 
+}
+void Window::Close() { 
+    m_isOpen = false; 
+}
+uint Window::getEvent() const { 
+    return m_events.type; 
+}
+
+SDL_Window *Window::getWindowPtr() { 
+    return m_window; 
+} 
+
 ubyte Window::Update() {
     return (ubyte)SDL_PollEvent(&m_events);
 }
