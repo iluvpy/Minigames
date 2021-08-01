@@ -37,5 +37,5 @@ bool Snake::IsDead() {
 }
 
 Snake::~Snake() {
-    m_snake.clear();
+
 }

@@ -46,5 +46,4 @@ void SnakeGrid::Update() {
 }
 
 SnakeGrid::~SnakeGrid() {
-
 }
