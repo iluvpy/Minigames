@@ -1,6 +1,11 @@
 # Minigames
 some simple minigames written in C++ with sdl2
 
+## Dependencies
+- sdl2
+- ninja
+- clang
+
 ## State
 in development <br>
 ![Markdown Logo](https://img.shields.io/badge/state-development-red)
