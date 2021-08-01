@@ -5,6 +5,7 @@
 #include "Renderer.hpp"
 #include "Window.hpp"
 #include "Utils.hpp"
+#include "SnakeGrid.hpp"
 
 class Program {
 public:

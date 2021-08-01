@@ -18,12 +18,15 @@ void Program::Init(const std::string& name) {
 }
 
 void Program::Start() {
+    SnakeGrid snake_grid(&m_renderer, &m_window, 0, 0, 40);
+
     while (m_window.isOpen()) {
         m_renderer.Start();
         
         // render here
         m_renderer.Fill(Color(100, 100, 100), &m_window);
 
+        snake_grid.Draw();
 
         m_renderer.End();
         

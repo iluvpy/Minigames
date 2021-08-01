@@ -5,19 +5,27 @@
 
 #include "Renderer.hpp" 
 #include "Types.hpp"
+#include "Structs.hpp"
+
+// forward declaration 
+// why? I cant include 'SnakeGrid.hpp' as it includes 'Snake.hpp' 
+// and compilers DONT like that
+// ie i need to use a forward declaration;
+class SnakeGrid;
 
 class Snake {
 public:
+    Color color;
     Snake();
-    Snake(uint length, int head_x, int head_y);
-    void Init(uint length, int head_x, int head_y);
-    void Draw(Renderer *renderer, uint rectWidth);
-    void Grow();
+    void Init(Renderer *renderer, uint length, int head_x, int head_y, uint rectWidth);
+    void Draw() const;
+    void Grow(SnakeGrid *grid);
     void Shrink();
-
+    bool IsDead();
     ~Snake();
 private:
-
-    std::vector<std::pair<int, int>> m_snake;
+    Renderer *m_renderer;
+    std::vector<Point> m_snake;
     uint m_length;
+    uint m_rectWidth;
 };
