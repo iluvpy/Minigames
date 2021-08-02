@@ -17,6 +17,7 @@ private:
 
     void InitSDL();
     void HandleEvents();
+    void Update();
     
     std::string m_window_name;
     Window m_window;

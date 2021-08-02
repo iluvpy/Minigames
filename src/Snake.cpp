@@ -1,14 +1,15 @@
 #include "Snake.hpp"
 #include "SnakeGrid.hpp"
+
 Snake::Snake() 
-: color(Color(0, 230, 80))
+: color(SNAKE_COLOR),
+  m_direction(Direction2d::up),
+  m_isAlive(true)
 {
 
 }
 
-void Snake::Init(Renderer *renderer, uint length, int head_x, int head_y, uint rectWidth) 
-
-{
+void Snake::Init(Renderer *renderer, uint length, int head_x, int head_y, uint rectWidth) {
     m_renderer = renderer;
     m_length = length;
     m_rectWidth = rectWidth;
@@ -23,17 +24,48 @@ void Snake::Grow(SnakeGrid *grid) {
 }
 
 void Snake::Shrink() {
-    m_snake.pop_back();
+    if (m_snake.size() > 0) 
+        m_snake.pop_back();
+    else
+        m_isAlive = false;
 }
 
-void Snake::Draw() const{
+
+void Snake::AddSnakeToGrid(SnakeGrid *grid) {
     for (const auto& position : m_snake) {
-        m_renderer->DrawRect(position.x, position.y, m_rectWidth, m_rectWidth, Color(50, 200, 80));
+        if (!grid->Set(position.y/m_rectWidth-1, position.x/m_rectWidth-1, SnakeRectState::SnakeSection)) {
+            m_isAlive = false;
+            break;
+        }   
     }
 }
 
-bool Snake::IsDead() {
-    return m_length == 0;
+void Snake::Move() {
+    switch (m_direction)
+    {
+        case Direction2d::up:
+
+            break;
+
+        case Direction2d::down:
+
+            break;
+        
+        case Direction2d::left:
+
+            break;
+        
+        case Direction2d::right:
+
+            break;
+
+        default:
+            break;
+    }
+}
+
+bool Snake::IsAlive() const{
+    return m_isAlive;
 }
 
 Snake::~Snake() {

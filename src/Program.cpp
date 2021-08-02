@@ -31,6 +31,8 @@ void Program::Start() {
         m_renderer.End();
         
         HandleEvents();
+        //Update(); XXX use update function
+        snake_grid.Update();
     }
 }
 
@@ -47,7 +49,11 @@ void Program::HandleEvents() {
         }
     }
 }
- 
+
+void Program::Update() {
+    
+}
+
 Program::~Program() {
     m_window.Quit();
     m_renderer.Quit();
