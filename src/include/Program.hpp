@@ -2,10 +2,12 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
+
 #include "Renderer.hpp"
 #include "Window.hpp"
 #include "Utils.hpp"
-#include "SnakeGrid.hpp"
+#include "SnakeGame.hpp"
+#include "KeyboardHandler.hpp"
 
 class Program {
 public:
@@ -22,4 +24,9 @@ private:
     std::string m_window_name;
     Window m_window;
     Renderer m_renderer;
+    KeyboardHandler m_keyboard;
+
+
+    // games
+    SnakeGame m_snake;
 };

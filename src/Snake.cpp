@@ -1,16 +1,18 @@
 #include "Snake.hpp"
-#include "SnakeGrid.hpp"
+#include "SnakeGame.hpp"
+
 
 Snake::Snake() 
 : color(SNAKE_COLOR),
   m_direction(Direction2d::up),
   m_isAlive(true)
 {
-
+    m_lastUpdate = Util::GetClock();
 }
 
-void Snake::Init(Renderer *renderer, uint length, int head_x, int head_y, uint rectWidth) {
+void Snake::Init(Renderer *renderer, KeyboardHandler *kbHandler, uint length, int head_x, int head_y, uint rectWidth) {
     m_renderer = renderer;
+    m_keyboard = kbHandler;
     m_length = length;
     m_rectWidth = rectWidth;
     for (int i = 0; i < length; i++) {
@@ -19,7 +21,7 @@ void Snake::Init(Renderer *renderer, uint length, int head_x, int head_y, uint r
     }
 }
 
-void Snake::Grow(SnakeGrid *grid) {
+void Snake::Grow(SnakeGame *grid) {
     
 }
 
@@ -31,36 +33,56 @@ void Snake::Shrink() {
 }
 
 
-void Snake::AddSnakeToGrid(SnakeGrid *grid) {
+void Snake::AddSnakeToGrid(SnakeGame *game) {
     for (const auto& position : m_snake) {
-        if (!grid->Set(position.y/m_rectWidth-1, position.x/m_rectWidth-1, SnakeRectState::SnakeSection)) {
+        if (!game->Set(position.y/m_rectWidth-1, position.x/m_rectWidth-1, SnakeRectState::SnakeSection)) {
             m_isAlive = false;
             break;
         }   
     }
 }
 
-void Snake::Move() {
-    switch (m_direction)
-    {
-        case Direction2d::up:
+void Snake::Update() {
 
-            break;
+    if (m_keyboard->isPressed(SDLK_w)) {
+        m_direction = Direction2d::up;
+    }
+    if (m_keyboard->isPressed(SDLK_s)) {
+        m_direction = Direction2d::down;
+    }
+    if (m_keyboard->isPressed(SDLK_a)) {
+        m_direction = Direction2d::left;
+    }
+    if (m_keyboard->isPressed(SDLK_d)) {
+        m_direction = Direction2d::right;
+    }
+    Clock_t now = Util::GetClock();
+    float diff = Util::GetClockDifference(now, m_lastUpdate);
+    std::cout << "diff: " << diff << std::endl; 
+    if (diff >= 0.5f) {
+        m_lastUpdate = now;
 
-        case Direction2d::down:
+        switch (m_direction)
+        {
+            case Direction2d::up:
+                m_snake[0].y -= m_rectWidth;
+                break;
 
-            break;
-        
-        case Direction2d::left:
+            case Direction2d::down:
+                m_snake[0].y += m_rectWidth;
+                break;
+            
+            case Direction2d::left:
+                m_snake[0].x -= m_rectWidth;
+                break;
+            
+            case Direction2d::right:
+                m_snake[0].x += m_rectWidth;
+                break;
 
-            break;
-        
-        case Direction2d::right:
-
-            break;
-
-        default:
-            break;
+            default:
+                break;
+        }
     }
 }
 

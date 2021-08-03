@@ -3,7 +3,7 @@
 #include "Types.hpp"
 
 enum CurrentGame : ubyte {
-    SnakeGame,
+    Snake_,
     Pong,
     Tetris
 };

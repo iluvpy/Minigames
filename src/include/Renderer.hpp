@@ -16,7 +16,6 @@ public:
     void DrawRect(int x, int y, int w, int h, const Color& color=Color());
     void Start();
     void End();
-    void Quit();
     ~Renderer();
 
 private:

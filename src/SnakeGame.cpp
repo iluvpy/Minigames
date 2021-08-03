@@ -1,9 +1,13 @@
-#include "SnakeGrid.hpp"
+#include "SnakeGame.hpp"
 
-SnakeGrid::SnakeGrid(Renderer *renderer, Window *window, int x, int y, int rectWidth) 
-: m_renderer(renderer),
-  m_rectWidth(rectWidth)
-{
+SnakeGame::SnakeGame() {
+
+}
+
+void SnakeGame::Init(Renderer *renderer, Window *window, KeyboardHandler *kbHandler, int x, int y, int rectWidth) {
+    m_renderer = renderer;
+    m_rectWidth = rectWidth;
+    m_keyboard = kbHandler;
     SDL_Rect r = window->getWindowRect();
     m_windowW = r.w;
     m_windowH = r.h;
@@ -19,12 +23,13 @@ SnakeGrid::SnakeGrid(Renderer *renderer, Window *window, int x, int y, int rectW
 
     int approx_middleX = (int)m_rectWidth*m_grid[0].size()/2; // index x
     int approx_middleY = (int)m_rectWidth*m_grid.size()/2; // index y
-    m_snake.Init(m_renderer, 5, approx_middleX, approx_middleY-m_rectWidth/2, m_rectWidth);
+
+    m_snake.Init(m_renderer, m_keyboard, 5, approx_middleX, approx_middleY-m_rectWidth/2, m_rectWidth);
 }
 
 
-void SnakeGrid::Draw() {
-
+void SnakeGame::Draw() {
+    ClearGrid();
     m_snake.AddSnakeToGrid(this);
 
     for (const auto& rectLayer : m_grid) {
@@ -32,6 +37,7 @@ void SnakeGrid::Draw() {
             m_renderer->DrawRect(rect.x, rect.y, rect.w, rect.w, Util::GetSnakeGridRectColor(rect));
         }
     }
+
 
     // draw grid
     for (int yi = 0; yi < m_windowH; yi += m_rectWidth) {
@@ -44,25 +50,26 @@ void SnakeGrid::Draw() {
 
 }
 
-// adds apple to random square on grid every m_interval XXX add m_interval
-void SnakeGrid::GenApple() {
+// adds apple to random square on grid every m_interval 
+// XXX add m_interval
+void SnakeGame::GenApple() {
 
 }
 
-void SnakeGrid::Update() {
-    m_snake.Move();
+void SnakeGame::Update() {
+    m_snake.Update();
     GenApple();
 }
 
-int SnakeGrid::GetWidth() const {
+int SnakeGame::GetWidth() const {
     return m_grid.size();
 }
 
-int SnakeGrid::GetHeight() const {
+int SnakeGame::GetHeight() const {
     return m_grid[0].size();
 }
 
-bool SnakeGrid::Set(int x, int y, const SnakeRectState& state) {
+bool SnakeGame::Set(int x, int y, const SnakeRectState& state) {
     if (x >= 0 &&
         y >= 0 &&
         x < GetWidth() &&
@@ -73,6 +80,14 @@ bool SnakeGrid::Set(int x, int y, const SnakeRectState& state) {
     return false;
 }
 
+void SnakeGame::ClearGrid() {
+    for (auto& rects : m_grid) {
+        for (auto& rect : rects) {
+            rect.state = SnakeRectState::none;
+        }
+    }
+}
 
-SnakeGrid::~SnakeGrid() {
+
+SnakeGame::~SnakeGame() {
 }

@@ -15,10 +15,11 @@ void Program::Init(const std::string& name) {
     m_window.Init(name);
     m_renderer.Init(m_window.getWindowPtr());
 
+    // init games
+    m_snake.Init(&m_renderer, &m_window, &m_keyboard, 0, 0, 40);
 }
 
 void Program::Start() {
-    SnakeGrid snake_grid(&m_renderer, &m_window, 0, 0, 40);
 
     while (m_window.isOpen()) {
         m_renderer.Start();
@@ -26,24 +27,31 @@ void Program::Start() {
         // render here
         m_renderer.Fill(Color(100, 100, 100), &m_window);
 
-        snake_grid.Draw();
+        m_snake.Draw(); 
 
         m_renderer.End();
         
         HandleEvents();
-        //Update(); XXX use update function
-        snake_grid.Update();
+        Update();
     }
 }
 
 void Program::HandleEvents() {
 
     while (m_window.Update()){
-        switch (m_window.getEvent()) {
+        SDL_Event event = m_window.getEvent();
+        switch (event.type) {
             case SDL_QUIT:
                 m_window.Close();
                 break;
             
+            case SDL_KEYDOWN:
+                m_keyboard.Press(event);
+                break;
+            case SDL_KEYUP:
+                m_keyboard.Release(event);
+                break;
+
             default:
                 break;
         }
@@ -51,12 +59,10 @@ void Program::HandleEvents() {
 }
 
 void Program::Update() {
-    
+    m_snake.Update();
 }
 
 Program::~Program() {
-    m_window.Quit();
-    m_renderer.Quit();
 
     std::cout << "exiting..\n";
     SDL_Quit();

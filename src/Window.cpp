@@ -20,8 +20,8 @@ bool Window::isOpen() const {
 void Window::Close() { 
     m_isOpen = false; 
 }
-uint Window::getEvent() const { 
-    return m_events.type; 
+SDL_Event Window::getEvent() const { 
+    return m_events; 
 }
 
 SDL_Window *Window::getWindowPtr() { 
@@ -30,10 +30,6 @@ SDL_Window *Window::getWindowPtr() {
 
 ubyte Window::Update() {
     return (ubyte)SDL_PollEvent(&m_events);
-}
-
-void Window::Quit() {
-    this->~Window();
 }
 
 Window::~Window() {

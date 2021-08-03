@@ -33,9 +33,6 @@ void Renderer::End() {
     SDL_RenderPresent(m_renderer);
 }
 
-void Renderer::Quit() {
-    this->~Renderer();
-}
 
 Renderer::~Renderer() {
     SDL_DestroyRenderer(m_renderer);

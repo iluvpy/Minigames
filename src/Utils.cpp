@@ -10,7 +10,6 @@ int64 Util::GetTimeMs() {
 }
 
 
-
 Color Util::GetSnakeGridRectColor(const SnakeGridRect& rect) {
     switch (rect.state) {
         case SnakeRectState::none:
@@ -22,4 +21,8 @@ Color Util::GetSnakeGridRectColor(const SnakeGridRect& rect) {
     }
 }
 
+// returns clock1-clock2 in seconds
+float Util::GetClockDifference(Clock_t clock1, Clock_t clock2) {
+    return std::chrono::duration<float>(clock1-clock2).count();
+}
 
