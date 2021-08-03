@@ -14,8 +14,8 @@ build obj/renderer.o: cc src/Renderer.cpp
 build obj/color.o: cc src/Color.cpp
 build obj/utils.o: cc src/Utils.cpp
 build obj/snake.o: cc src/Snake.cpp
-build obj/snakegrid.o: cc src/SnakeGrid.cpp
+build obj/snakegame.o: cc src/SnakeGame.cpp  
 build obj/keyboardhandler.o: cc src/KeyboardHandler.cpp
 
 # build client file
-build client: lnk obj/main.o obj/snake.o obj/snakegrid.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
+build client: lnk obj/main.o obj/keyboardhandler.o obj/snake.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
