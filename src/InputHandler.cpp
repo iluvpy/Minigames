@@ -1,11 +1,11 @@
-#include "KeyboardHandler.hpp"
+#include "InputHandler.hpp"
 #include "Utils.hpp"
 
-KeyboardHandler::KeyboardHandler() {
+InputHandler::InputHandler() {
 
 }
 
-void KeyboardHandler::Press(SDL_Event e) {
+void InputHandler::Press(SDL_Event e) {
     auto it = m_keys.find(Util::GetKeyCode(e));
     if (it != m_keys.end()) 
         it->second = true;
@@ -13,7 +13,7 @@ void KeyboardHandler::Press(SDL_Event e) {
         m_keys[Util::GetKeyCode(e)] = true;
 }
 
-void KeyboardHandler::Release(SDL_Event e) {
+void InputHandler::Release(SDL_Event e) {
     auto it = m_keys.find(Util::GetKeyCode(e));
     if (it != m_keys.end()) 
         it->second = false;
@@ -21,7 +21,7 @@ void KeyboardHandler::Release(SDL_Event e) {
         m_keys[Util::GetKeyCode(e)] = false;
 }
 
-bool KeyboardHandler::isPressed(SDL_KeyCode code) {
+bool InputHandler::isPressed(SDL_KeyCode code) {
     auto it = m_keys.find(code);
     if (it != m_keys.end()) {
         return it->second;
@@ -29,10 +29,10 @@ bool KeyboardHandler::isPressed(SDL_KeyCode code) {
     return false;
 }
 
-bool KeyboardHandler::isReleased(SDL_KeyCode code) {
+bool InputHandler::isReleased(SDL_KeyCode code) {
     return !isPressed(code);
 }
 
-KeyboardHandler::~KeyboardHandler() {
+InputHandler::~InputHandler() {
 
 }
