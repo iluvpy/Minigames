@@ -16,7 +16,7 @@ void Program::Init(const std::string& name) {
     m_renderer.Init(m_window.getWindowPtr());
 
     // init games
-    m_snake.Init(&m_renderer, &m_window, &m_keyboard, 0, 0, 40);
+    m_snake.Init(&m_renderer, &m_window, &m_input, 0, 0, 40);
 }
 
 void Program::Start() {
@@ -46,10 +46,10 @@ void Program::HandleEvents() {
                 break;
             
             case SDL_KEYDOWN:
-                m_keyboard.Press(event);
+                m_input.Press(event);
                 break;
             case SDL_KEYUP:
-                m_keyboard.Release(event);
+                m_input.Release(event);
                 break;
 
             default:

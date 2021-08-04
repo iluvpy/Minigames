@@ -4,10 +4,10 @@ SnakeGame::SnakeGame() {
 
 }
 
-void SnakeGame::Init(Renderer *renderer, Window *window, KeyboardHandler *kbHandler, int x, int y, int rectWidth) {
+void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int x, int y, int rectWidth) {
     m_renderer = renderer;
     m_rectWidth = rectWidth;
-    m_keyboard = kbHandler;
+    m_input = kbHandler;
     SDL_Rect r = window->getWindowRect();
     m_windowW = r.w;
     m_windowH = r.h;
@@ -24,7 +24,7 @@ void SnakeGame::Init(Renderer *renderer, Window *window, KeyboardHandler *kbHand
     int approx_middleX = (int)m_rectWidth*m_grid[0].size()/2; // index x
     int approx_middleY = (int)m_rectWidth*m_grid.size()/2; // index y
 
-    m_snake.Init(m_renderer, m_keyboard, 5, approx_middleX, approx_middleY-m_rectWidth/2, m_rectWidth);
+    m_snake.Init(m_renderer, m_input, 10, approx_middleX, approx_middleY-m_rectWidth/2, m_rectWidth);
 }
 
 
@@ -37,7 +37,6 @@ void SnakeGame::Draw() {
             m_renderer->DrawRect(rect.x, rect.y, rect.w, rect.w, Util::GetSnakeGridRectColor(rect));
         }
     }
-
 
     // draw grid
     for (int yi = 0; yi < m_windowH; yi += m_rectWidth) {
@@ -69,15 +68,25 @@ int SnakeGame::GetHeight() const {
     return m_grid[0].size();
 }
 
-bool SnakeGame::Set(int x, int y, const SnakeRectState& state) {
-    if (x >= 0 &&
-        y >= 0 &&
-        x < GetWidth() &&
-        y < GetHeight()) {
-            m_grid[x][y].state = state;
+bool SnakeGame::Set(int x_index, int y_index, const SnakeRectState& state) {
+    if (x_index >= 0 &&
+        y_index >= 0 &&
+        x_index < GetWidth() &&
+        y_index < GetHeight()) {
+            m_grid[x_index][y_index].state = state;
             return true;
     }
     return false;
+}
+
+SnakeRectState SnakeGame::Get(int x_index, int y_index) {
+    if (x_index >= 0 &&
+        y_index >= 0 &&
+        x_index < GetWidth() &&
+        y_index < GetHeight()) {
+        return m_grid[x_index][y_index].state;
+    }
+    return SnakeRectState::none;
 }
 
 void SnakeGame::ClearGrid() {

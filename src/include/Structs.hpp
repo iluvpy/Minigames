@@ -23,6 +23,12 @@ enum SnakeRectState : ubyte {
 
 struct Point {
     int x, y;
+
+    Point& operator=(const Point& other) noexcept {
+        x = other.x;
+        y = other.y;
+        return *this;
+    }
 };
 
 
