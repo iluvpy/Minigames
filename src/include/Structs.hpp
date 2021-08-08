@@ -16,8 +16,8 @@ enum Direction2d : ubyte {
 };
 
 enum SnakeRectState : ubyte {
-    none, // empty
-    food,
+    None, // empty
+    Food,
     SnakeSection // part of snake
 };
 

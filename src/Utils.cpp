@@ -12,12 +12,12 @@ int64 Util::GetTimeMs() {
 
 Color Util::GetSnakeGridRectColor(const SnakeGridRect& rect) {
     switch (rect.state) {
-        case SnakeRectState::none:
+        case SnakeRectState::None:
             return SNAKE_GRID_GRAY; // gray
-        case SnakeRectState::food:
+        case SnakeRectState::Food:
             return SNAKE_GRID_APPLE_COLOR; // red
         case SnakeRectState::SnakeSection:
-            return SNAKE_COLOR;
+            return SNAKE_COLOR; // green
     }
 }
 
