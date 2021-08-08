@@ -2,7 +2,8 @@
 
 #include <thread>
 #include <chrono>
-
+#include <ctime>
+#include <random>
 
 #include "Types.hpp"
 #include "Color.hpp"
