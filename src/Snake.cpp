@@ -21,40 +21,14 @@ void Snake::Init(Renderer *renderer, InputHandler *kbHandler, uint length, int h
     }
 }
 
-void Snake::Grow(SnakeGame *grid) {
+void Snake::Grow(SnakeGame *game) {
     Point last = m_snake[m_snake.size()-1];
-
-    //  here im checking which position the new snake piece can grow to
-    // what im checking;
-    //    □
-    //  ■ □ □
-    //    □
-    Point p = {static_cast<int>(last.x/m_rectWidth-2), static_cast<int>(last.y/m_rectWidth-1)}; 
-    if (grid->Get(p.x, p.y) == SnakeRectState::none) m_snake.push_back(p);
-    // im checking;
-    //    □
-    //  □ □ ■
-    //    □
-    p.x += 2; 
-    if (grid->Get(p.x, p.y) == SnakeRectState::none) m_snake.push_back(p);
-    // im checking;
-    //    □
-    //  □ □ □
-    //    ■
-    p.x -= 1;
-    p.y++; 
-    if (grid->Get(p.x, p.y) == SnakeRectState::none) m_snake.push_back(p);
-    // im checking;
-    //    ■
-    //  □ □ □
-    //    □
-    p.y -= 2; 
-    if (grid->Get(p.x, p.y) == SnakeRectState::none) m_snake.push_back(p);
-
+    last.y++;
+    m_snake.push_back(last);
 }
 
 void Snake::Shrink() {
-    if (m_snake.size() > 0) 
+    if (m_snake.size() > 1) 
         m_snake.pop_back();
     else
         m_isAlive = false;
@@ -63,7 +37,7 @@ void Snake::Shrink() {
 
 void Snake::AddSnakeToGrid(SnakeGame *game) {
     for (const auto& position : m_snake) {
-        if (!game->Set(position.y/m_rectWidth-1, position.x/m_rectWidth-1, SnakeRectState::SnakeSection)) {
+        if (!game->Set(position.x/m_rectWidth-1, position.y/m_rectWidth-1, SnakeRectState::SnakeSection)) {
             m_isAlive = false;
             break;
         }   
