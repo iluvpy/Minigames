@@ -15,7 +15,7 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
     for (int iy = x; iy < m_windowH; iy += m_rectWidth) {
         std::vector<SnakeGridRect> tmp;
         for (int ix = y; ix < m_windowW; ix += m_rectWidth) {
-            SnakeGridRect rect {ix, iy, m_rectWidth, SnakeRectState::none};
+            SnakeGridRect rect {ix, iy, m_rectWidth, SnakeRectState::None};
             tmp.push_back(rect);
         }
         m_grid.push_back(tmp);
@@ -56,6 +56,12 @@ void SnakeGame::GenApple() {
 }
 
 void SnakeGame::Update() {
+    if (m_input->isMouseButtonPressed(SDL_BUTTON_LEFT)) {
+        m_snake.Grow(this);
+    }
+    if (m_input->isMouseButtonPressed(SDL_BUTTON_RIGHT)) {
+        m_snake.Shrink();
+    }
     m_snake.Update();
     GenApple();
 }
@@ -73,7 +79,7 @@ bool SnakeGame::Set(int x_index, int y_index, const SnakeRectState& state) {
         y_index >= 0 &&
         x_index < GetWidth() &&
         y_index < GetHeight()) {
-            m_grid[x_index][y_index].state = state;
+            m_grid[y_index][x_index].state = state;
             return true;
     }
     return false;
@@ -84,15 +90,15 @@ SnakeRectState SnakeGame::Get(int x_index, int y_index) {
         y_index >= 0 &&
         x_index < GetWidth() &&
         y_index < GetHeight()) {
-        return m_grid[x_index][y_index].state;
+        return m_grid[y_index][x_index].state;
     }
-    return SnakeRectState::none;
+    return SnakeRectState::None;
 }
 
 void SnakeGame::ClearGrid() {
     for (auto& rects : m_grid) {
         for (auto& rect : rects) {
-            rect.state = SnakeRectState::none;
+            rect.state = SnakeRectState::None;
         }
     }
 }
