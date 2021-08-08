@@ -46,10 +46,18 @@ void Program::HandleEvents() {
                 break;
             
             case SDL_KEYDOWN:
-                m_input.Press(event);
+                m_input.PressKey(event);
                 break;
             case SDL_KEYUP:
-                m_input.Release(event);
+                m_input.ReleaseKey(event);
+                break;
+            
+            case SDL_MOUSEBUTTONDOWN:
+                m_input.PressMouseButton(event);
+                break;
+
+            case SDL_MOUSEBUTTONUP:
+                m_input.ReleaseMouseButton(event);
                 break;
 
             default:
