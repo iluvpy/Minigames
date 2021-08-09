@@ -97,9 +97,10 @@ void Snake::Update() {
             default:
                 break;
         }
-        
+
         for (int i = 1; i < m_snakePositions.size(); i++) {
             Point copy_pos = m_snakePositions[i];
+            if (copy_pos == m_snakePositions[0]) {m_isAlive = false;} // snake is on top of other piece of the snake
             m_snakePositions[i] = lastPos;
             lastPos = copy_pos;
         }

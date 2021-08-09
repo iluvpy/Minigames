@@ -62,13 +62,18 @@ void SnakeGame::GenApple() {
 }
 
 void SnakeGame::Update() {
-    m_snake.Update();
+    if (m_snake.IsAlive()) {
+        m_snake.Update();
 
-    if (m_food.FoodWasEaten(this)) {
-        m_snake.Grow(this);
+        if (m_food.FoodWasEaten(this)) {
+            m_snake.Grow(this);
+        }
+        GenApple();
+    }
+    else {
+        std::cout << "Haha dead, gg\n";
     }
 
-    GenApple();
 }
 
 int SnakeGame::GetIndexHeight() const {
