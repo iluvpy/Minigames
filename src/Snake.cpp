@@ -10,21 +10,19 @@ Snake::Snake()
     m_lastMovementUpdate = Util::GetClock();
 }
 
-void Snake::Init(Renderer *renderer, InputHandler *kbHandler, uint length, int head_x, int head_y, uint rectWidth) {
+void Snake::Init(Renderer *renderer, InputHandler *kbHandler, uint length, int head_x, int head_y) {
     m_renderer = renderer;
     m_input = kbHandler;
     m_length = length;
-    m_rectWidth = rectWidth;
     for (int i = 0; i < length; i++) {
-        m_snakePositions.push_back(Point{head_x, head_y});
-        head_y += rectWidth;
+        m_snakePositions.push_back(Point{head_x, head_y+i});
     }
 }
 
 void Snake::Grow(SnakeGame *game) {
     Point last = m_snakePositions[m_snakePositions.size()-1];
-    last.y += m_rectWidth;
-    m_snakePositions.emplace_back(last);
+    last.y += 1;
+    m_snakePositions.push_back(last);
 }
 
 void Snake::Shrink() {
@@ -37,7 +35,7 @@ void Snake::Shrink() {
 
 void Snake::AddSnakeToGame(SnakeGame *game) {
     for (auto& position : m_snakePositions) {
-        if (!game->Set(position.x/m_rectWidth-1, position.y/m_rectWidth-1, SnakeRectState::SnakeSection)) {
+        if (!game->Set(position.x, position.y, SnakeRectState::SnakeSection)) {
             m_isAlive = false;
             break;
         }   
@@ -66,19 +64,19 @@ void Snake::Update() {
         Point lastPos = m_snakePositions[0];
         switch (m_direction) {
             case Direction2d::up:
-                m_snakePositions[0].y -= m_rectWidth;
+                m_snakePositions[0].y -= 1;
                 break;
 
             case Direction2d::down:
-                m_snakePositions[0].y += m_rectWidth;
+                m_snakePositions[0].y += 1;
                 break;
             
             case Direction2d::left:
-                m_snakePositions[0].x -= m_rectWidth;
+                m_snakePositions[0].x -= 1;
                 break;
                 
             case Direction2d::right:
-                m_snakePositions[0].x += m_rectWidth;
+                m_snakePositions[0].x += 1;
                 break;
 
             default:

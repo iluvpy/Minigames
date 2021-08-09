@@ -18,7 +18,7 @@ class Snake {
 public:
     Color color;
     Snake();
-    void Init(Renderer *renderer, InputHandler *kbHandler, uint length, int head_x, int head_y, uint rectWidth);
+    void Init(Renderer *renderer, InputHandler *kbHandler, uint length, int head_x, int head_y);
     void Draw() const;
     void Grow(SnakeGame *game);
     void AddSnakeToGame(SnakeGame *game);
@@ -33,6 +33,5 @@ private:
     Direction2d m_direction;
     Clock_t m_lastMovementUpdate;
     uint m_length;
-    uint m_rectWidth;
     bool m_isAlive;
 };

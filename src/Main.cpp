@@ -7,8 +7,7 @@
 
 int main(int argc, char **argv) {
     Program p;
-    p.Init("Minigames");
+    p.Init("Minigames"); // init with program name 
     p.Start();
-
     return 0;
 }

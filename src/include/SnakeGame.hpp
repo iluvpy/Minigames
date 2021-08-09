@@ -9,7 +9,6 @@
 
 #define SNAKE_GRID_GRAY Color(100, 100, 100)
 #define SNAKE_GRID_APPLE_COLOR Color(200, 30, 30)
-#define FOOD_INTERVAL 2.0f
 
 class SnakeGame {
 public:

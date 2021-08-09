@@ -6,10 +6,12 @@ SnakeFood::SnakeFood()  {}
 
 void SnakeFood::AddNewRandomFood(SnakeGame *game) {
     Point position;
+    ubyte tries = 0; // avoid getting trapped in an infinite loop
     do {
-        position.x = Util::GetRandomInt(game->GetIndexWidth()-1);
-        position.y = Util::GetRandomInt(game->GetIndexHeight()-1);
-    } while (game->Get(position.x, position.y) != SnakeRectState::None);
+        position.x = Util::GetRandomInt(game->GetIndexWidth());
+        position.y = Util::GetRandomInt(game->GetIndexHeight());
+        tries++;
+    } while (game->Get(position.x, position.y) != SnakeRectState::None && tries < 10);
     m_foodPositions.push_back(position);
 }
 
@@ -20,9 +22,9 @@ void SnakeFood::AddFoodToGame(SnakeGame *game) {
 }
 
 bool SnakeFood::FoodWasEaten(SnakeGame *game) {
-    for (const auto& pos : m_foodPositions) {
-        if (game->Get(game->XtoXIndex(pos.x), game->YtoYIndex(pos.y)) == SnakeRectState::SnakeSection) {
-            std::cout << "heyy \n";
+    for (auto it = m_foodPositions.begin(); it != m_foodPositions.end(); it++) {
+        if (game->Get(it->x, it->y) == SnakeRectState::SnakeSection) {
+            m_foodPositions.erase(it);
             return true;
         }
     }

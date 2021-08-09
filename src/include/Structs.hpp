@@ -3,9 +3,9 @@
 #include "Types.hpp"
 
 enum CurrentGame : ubyte {
-    Snake_,
-    Pong,
-    Tetris
+    SNAKEGAME,
+    PONGGAME,
+    TETRISGAME
 };
 
 enum Direction2d : ubyte {

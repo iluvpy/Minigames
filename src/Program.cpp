@@ -12,7 +12,7 @@ void Program::InitSDL() {
 }
 
 void Program::Init(const std::string& name) {
-    srand(time(NULL));
+    srand(time(NULL)); // init random library with seed
     InitSDL();
     m_window.Init(name);
     m_renderer.Init(m_window.getWindowPtr());
@@ -22,12 +22,12 @@ void Program::Init(const std::string& name) {
 }
 
 void Program::Start() {
-
+    // main loop
     while (m_window.isOpen()) {
         m_renderer.Start();
         
         // render here
-        m_renderer.Fill(Color(100, 100, 100), &m_window);
+        m_renderer.Fill(Color(100, 100, 100), &m_window); // draw background
 
         m_snake.Draw(); 
 

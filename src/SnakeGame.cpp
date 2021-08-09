@@ -1,6 +1,9 @@
 #include "SnakeGame.hpp"
 #include "SnakeFood.hpp"
 
+#define FOOD_INTERVAL 5.0f
+
+
 SnakeGame::SnakeGame() {
 }
 
@@ -21,10 +24,10 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
         m_grid.push_back(tmp);
     }
 
-    int approx_middleX = (int)m_rectWidth*m_grid[0].size()/2; // index x
-    int approx_middleY = (int)m_rectWidth*m_grid.size()/2; // index y
+    int approx_middleX = (int)GetIndexWidth()/2; // index x
+    int approx_middleY = (int)GetIndexHeight()/2; // index y
 
-    m_snake.Init(m_renderer, m_input, 10, approx_middleX, approx_middleY-m_rectWidth/2, m_rectWidth);
+    m_snake.Init(m_renderer, m_input, 10, approx_middleX, approx_middleY);
 }
 
 
@@ -50,7 +53,6 @@ void SnakeGame::Draw() {
 }
 
 // adds apple to random square on grid every m_interval 
-// XXX add m_interval
 void SnakeGame::GenApple() {
     Clock_t now = Util::GetClock();
     if (Util::GetClockDifference(now, m_lastFoodUpdate) >= FOOD_INTERVAL) {
@@ -63,7 +65,6 @@ void SnakeGame::Update() {
     m_snake.Update();
 
     if (m_food.FoodWasEaten(this)) {
-        std::cout << "food was eaten!\n";
         m_snake.Grow(this);
     }
 
@@ -83,11 +84,11 @@ int SnakeGame::GetRectWidth() const  {
 }
 
 int SnakeGame::XtoXIndex(int x) {
-    return (int)(x/m_rectWidth-1);
+    return (x/m_rectWidth-1);
 }
 
 int SnakeGame::YtoYIndex(int y) {
-    return (int)(y/m_rectWidth-1);
+    return (y/m_rectWidth-1);
 }
 
 
