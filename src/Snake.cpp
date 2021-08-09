@@ -21,8 +21,23 @@ void Snake::Init(Renderer *renderer, InputHandler *kbHandler, uint length, int h
 
 void Snake::Grow(SnakeGame *game) {
     Point last = m_snakePositions[m_snakePositions.size()-1];
-    last.y += 1;
-    m_snakePositions.push_back(last);
+    Point new_;
+
+    if (game->Get(last.x+1, last.y) == SnakeRectState::SnakeSection) {
+        new_ = Point{last.x-1, last.y};
+    }
+    else if (game->Get(last.x-1, last.y) == SnakeRectState::SnakeSection) {
+        new_ = Point{last.x+1, last.y};
+    }
+    else if (game->Get(last.x, last.y+1) == SnakeRectState::SnakeSection) {
+        new_ = Point{last.x, last.y-1};
+    }
+    else if (game->Get(last.x, last.y-1) == SnakeRectState::SnakeSection) {
+        new_ = Point{last.x, last.y+1};
+    }
+
+    m_snakePositions.push_back(new_);
+
 }
 
 void Snake::Shrink() {
