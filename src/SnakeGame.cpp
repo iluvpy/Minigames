@@ -1,7 +1,7 @@
 #include "SnakeGame.hpp"
+#include "SnakeFood.hpp"
 
 SnakeGame::SnakeGame() {
-
 }
 
 void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int x, int y, int rectWidth) {
@@ -30,8 +30,8 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
 
 void SnakeGame::Draw() {
     ClearGrid();
-    m_snake.AddSnakeToGrid(this);
-
+    m_food.AddFoodToGame(this);
+    m_snake.AddSnakeToGame(this);
     for (const auto& rectLayer : m_grid) {
         for (const auto& rect : rectLayer) {
             m_renderer->DrawRect(rect.x, rect.y, rect.w, rect.w, Util::GetSnakeGridRectColor(rect));
@@ -52,47 +52,65 @@ void SnakeGame::Draw() {
 // adds apple to random square on grid every m_interval 
 // XXX add m_interval
 void SnakeGame::GenApple() {
-
+    Clock_t now = Util::GetClock();
+    if (Util::GetClockDifference(now, m_lastFoodUpdate) >= FOOD_INTERVAL) {
+        m_lastFoodUpdate = now;
+        m_food.AddNewRandomFood(this);
+    }
 }
 
 void SnakeGame::Update() {
-    if (m_input->isMouseButtonPressed(SDL_BUTTON_LEFT)) {
+    m_snake.Update();
+
+    if (m_food.FoodWasEaten(this)) {
+        std::cout << "food was eaten!\n";
         m_snake.Grow(this);
     }
-    if (m_input->isMouseButtonPressed(SDL_BUTTON_RIGHT)) {
-        m_snake.Shrink();
-    }
-    m_snake.Update();
+
     GenApple();
 }
 
-int SnakeGame::GetWidth() const {
+int SnakeGame::GetIndexHeight() const {
     return m_grid.size();
 }
 
-int SnakeGame::GetHeight() const {
+int SnakeGame::GetIndexWidth() const {
     return m_grid[0].size();
 }
 
+int SnakeGame::GetRectWidth() const  {
+    return m_rectWidth;
+}
+
+int SnakeGame::XtoXIndex(int x) {
+    return (int)(x/m_rectWidth-1);
+}
+
+int SnakeGame::YtoYIndex(int y) {
+    return (int)(y/m_rectWidth-1);
+}
+
+
 bool SnakeGame::Set(int x_index, int y_index, const SnakeRectState& state) {
-    if (x_index >= 0 &&
-        y_index >= 0 &&
-        x_index < GetWidth() &&
-        y_index < GetHeight()) {
-            m_grid[y_index][x_index].state = state;
-            return true;
+    if (PosExists(x_index, y_index)) {
+        m_grid[y_index][x_index].state = state;
+        return true;
     }
     return false;
 }
 
 SnakeRectState SnakeGame::Get(int x_index, int y_index) {
-    if (x_index >= 0 &&
-        y_index >= 0 &&
-        x_index < GetWidth() &&
-        y_index < GetHeight()) {
+    if (PosExists(x_index, y_index)) {
         return m_grid[y_index][x_index].state;
     }
     return SnakeRectState::None;
+}
+
+bool SnakeGame::PosExists(int x_index, int y_index) {
+    return x_index >= 0 &&
+           y_index >= 0 &&
+           y_index < GetIndexHeight() &&
+           x_index < GetIndexWidth();
 }
 
 void SnakeGame::ClearGrid() {

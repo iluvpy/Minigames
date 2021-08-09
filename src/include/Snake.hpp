@@ -21,7 +21,7 @@ public:
     void Init(Renderer *renderer, InputHandler *kbHandler, uint length, int head_x, int head_y, uint rectWidth);
     void Draw() const;
     void Grow(SnakeGame *game);
-    void AddSnakeToGrid(SnakeGame *game);
+    void AddSnakeToGame(SnakeGame *game);
     void Shrink();
     void Update();
     bool IsAlive() const;
@@ -29,7 +29,7 @@ public:
 private:
     Renderer *m_renderer;
     InputHandler *m_input;
-    std::vector<Point> m_snake;
+    std::vector<Point> m_snakePositions;
     Direction2d m_direction;
     Clock_t m_lastMovementUpdate;
     uint m_length;

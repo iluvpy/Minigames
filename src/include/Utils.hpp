@@ -19,4 +19,5 @@ namespace Util {
     // returns clock1-clock2 in seconds
     float GetClockDifference(Clock_t clock1, Clock_t clock2);
     inline int GetKeyCode(SDL_Event e) { return e.key.keysym.sym; }
+    inline int GetRandomInt(int max, int min=0) { return rand() % max + min; }
 };

@@ -15,7 +15,8 @@ build obj/color.o: cc src/Color.cpp
 build obj/utils.o: cc src/Utils.cpp
 build obj/snake.o: cc src/Snake.cpp
 build obj/snakegame.o: cc src/SnakeGame.cpp  
+build obj/snakefood.o: cc src/SnakeFood.cpp  
 build obj/inputhandler.o: cc src/InputHandler.cpp
 
 # build client file
-build client: lnk obj/main.o obj/inputhandler.o obj/snake.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
+build client: lnk obj/main.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o

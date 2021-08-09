@@ -5,7 +5,6 @@
 
 #include "Renderer.hpp"
 #include "Window.hpp"
-#include "Utils.hpp"
 #include "SnakeGame.hpp"
 #include "InputHandler.hpp"
 

@@ -16,27 +16,27 @@ void Snake::Init(Renderer *renderer, InputHandler *kbHandler, uint length, int h
     m_length = length;
     m_rectWidth = rectWidth;
     for (int i = 0; i < length; i++) {
-        m_snake.push_back(Point{head_x, head_y});
+        m_snakePositions.push_back(Point{head_x, head_y});
         head_y += rectWidth;
     }
 }
 
 void Snake::Grow(SnakeGame *game) {
-    Point last = m_snake[m_snake.size()-1];
-    last.y++;
-    m_snake.push_back(last);
+    Point last = m_snakePositions[m_snakePositions.size()-1];
+    last.y += m_rectWidth;
+    m_snakePositions.emplace_back(last);
 }
 
 void Snake::Shrink() {
-    if (m_snake.size() > 1) 
-        m_snake.pop_back();
+    if (m_snakePositions.size() > 1) 
+        m_snakePositions.pop_back();
     else
         m_isAlive = false;
 }
 
 
-void Snake::AddSnakeToGrid(SnakeGame *game) {
-    for (const auto& position : m_snake) {
+void Snake::AddSnakeToGame(SnakeGame *game) {
+    for (auto& position : m_snakePositions) {
         if (!game->Set(position.x/m_rectWidth-1, position.y/m_rectWidth-1, SnakeRectState::SnakeSection)) {
             m_isAlive = false;
             break;
@@ -63,31 +63,31 @@ void Snake::Update() {
     if (Util::GetClockDifference(now, m_lastMovementUpdate) >= SNAKE_MOVEMENT_INTERVAL) {
         m_lastMovementUpdate = now;
 
-        Point lastPos = m_snake[0];
+        Point lastPos = m_snakePositions[0];
         switch (m_direction) {
             case Direction2d::up:
-                m_snake[0].y -= m_rectWidth;
+                m_snakePositions[0].y -= m_rectWidth;
                 break;
 
             case Direction2d::down:
-                m_snake[0].y += m_rectWidth;
+                m_snakePositions[0].y += m_rectWidth;
                 break;
             
             case Direction2d::left:
-                m_snake[0].x -= m_rectWidth;
+                m_snakePositions[0].x -= m_rectWidth;
                 break;
                 
             case Direction2d::right:
-                m_snake[0].x += m_rectWidth;
+                m_snakePositions[0].x += m_rectWidth;
                 break;
 
             default:
                 break;
         }
         
-        for (int i = 1; i < m_snake.size(); i++) {
-            Point copy_pos = m_snake[i];
-            m_snake[i] = lastPos;
+        for (int i = 1; i < m_snakePositions.size(); i++) {
+            Point copy_pos = m_snakePositions[i];
+            m_snakePositions[i] = lastPos;
             lastPos = copy_pos;
         }
     }

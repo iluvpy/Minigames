@@ -1,4 +1,5 @@
 #include "Program.hpp"
+#include "Utils.hpp"
 
 Program::Program() 
 {}
@@ -11,6 +12,7 @@ void Program::InitSDL() {
 }
 
 void Program::Init(const std::string& name) {
+    srand(time(NULL));
     InitSDL();
     m_window.Init(name);
     m_renderer.Init(m_window.getWindowPtr());
