@@ -13,7 +13,7 @@ void Renderer::Start() {
 
 void Renderer::Fill(const Color& color, const Window *window) {
     SDL_Rect r = window->getWindowRect();
-    DrawRect(r, color);
+    DrawRect(r.x, r.y, r.w, r.h, color);
 }
 
 void Renderer::SetColor(const Color& color) {
@@ -26,8 +26,8 @@ void Renderer::DrawRect(int x, int y, int w, int h, const Color& color) {
     SDL_RenderFillRect(m_renderer, &r);
 }
 
-void Renderer::DrawRect(const SDL_Rect& rect, const Color& color) {
-    DrawRect(rect.x, rect.y, rect.w, rect.h, color);
+void Renderer::DrawRect(const Rect& rect) {
+    DrawRect(rect.GetX(), rect.GetY(), rect.GetW(), rect.GetH(), rect.GetColor());
 }
 
 void Renderer::End() {

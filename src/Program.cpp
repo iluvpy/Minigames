@@ -17,9 +17,8 @@ void Program::Init(const std::string& name) {
     m_window.Init(name);
     m_renderer.Init(m_window.getWindowPtr());
 
-    m_gameMenu.Init(&m_renderer, &m_input);
-    // init games
-    m_snake.Init(&m_renderer, &m_window, &m_input, 0, 0, 40);
+    m_gameMenu.Init(&m_window, &m_renderer, &m_input);
+
 }
 
 void Program::Start() {
@@ -29,7 +28,7 @@ void Program::Start() {
         
         // render here
         m_renderer.Fill(Color(100, 100, 100), &m_window); // draw background
-
+    
         m_gameMenu.Draw();
         
         m_renderer.End();
@@ -62,6 +61,9 @@ void Program::HandleEvents() {
             case SDL_MOUSEBUTTONUP:
                 m_input.ReleaseMouseButton(event);
                 break;
+
+            case SDL_MOUSEMOTION:
+                m_input.SetMousePos(Point{event.motion.x, event.motion.y});
 
             default:
                 break;

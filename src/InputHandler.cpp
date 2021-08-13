@@ -56,3 +56,11 @@ bool InputHandler::isMouseButtonPressed(ubyte code) {
 bool InputHandler::isMouseButtonReleased(ubyte code) {
     return !isMouseButtonPressed(code);
 }
+
+void InputHandler::SetMousePos(const Point& pos) {
+    m_mousePos = pos;
+}
+
+Point InputHandler::GetMousePos() {
+    return m_mousePos;
+}

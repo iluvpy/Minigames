@@ -5,7 +5,7 @@
 
 
 
-void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int x, int y, int rectWidth) {
+void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int rectWidth) {
     m_renderer = renderer;
     m_rectWidth = rectWidth;
     m_input = kbHandler;
@@ -13,9 +13,9 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
     m_windowW = r.w;
     m_windowH = r.h;
 
-    for (int iy = x; iy < m_windowH; iy += m_rectWidth) {
+    for (int iy = 0; iy < m_windowH; iy += m_rectWidth) {
         std::vector<SnakeGridRect> tmp;
-        for (int ix = y; ix < m_windowW; ix += m_rectWidth) {
+        for (int ix = 0; ix < m_windowW; ix += m_rectWidth) {
             SnakeGridRect rect {ix, iy, m_rectWidth, SnakeRectState::None};
             tmp.push_back(rect);
         }

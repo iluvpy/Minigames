@@ -12,7 +12,7 @@
 
 class SnakeGame {
 public:
-    void Init(Renderer *renderer, Window *window, InputHandler *kbHandler,int x, int y, int rectWidth=10);
+    void Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int rectWidth=10);
     void Draw();
     void GenApple(); // adds apple to random square on grid
     void Update();

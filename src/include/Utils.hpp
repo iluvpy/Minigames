@@ -17,7 +17,7 @@ namespace Util {
     Color GetSnakeGridRectColor(const SnakeGridRect& rect);
     inline Clock_t GetClock() { return std::chrono::steady_clock::now(); }
     // returns clock1-clock2 in seconds
-    float GetClockDifference(Clock_t clock1, Clock_t clock2);
-    inline int GetKeyCode(SDL_Event e) { return e.key.keysym.sym; }
+    float GetClockDifference(const Clock_t& clock1, const Clock_t& clock2);
+    inline int GetKeyCode(const SDL_Event& e) { return e.key.keysym.sym; }
     inline int GetRandomInt(int max, int min=0) { return rand() % max + min; }
 };

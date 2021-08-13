@@ -25,6 +25,4 @@ private:
     Renderer m_renderer;
     InputHandler m_input;
     GameMenu m_gameMenu;
-    // games
-    SnakeGame m_snake;
 };

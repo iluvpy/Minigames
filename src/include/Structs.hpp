@@ -56,10 +56,9 @@ struct Point {
     }
 };
 
-struct Rect {
+struct RectS {
     int x, y, w, h;
 };
-
 
 struct SnakeGridRect {
     int x, y, w;
