@@ -19,9 +19,8 @@ private:
     void DrawGameMenu();
     void UpdateCurrentGame();
     void DrawCurrentGame();
+    bool GameActive();
 
-
-    bool m_gameSelected;
     Window *m_window;
     Renderer *m_renderer;
     InputHandler *m_input;

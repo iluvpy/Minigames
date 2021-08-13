@@ -1,7 +1,6 @@
 #include  "GameMenu.hpp"
 
 void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input) {
-    m_gameSelected = false;
     m_window = window;
     m_renderer = renderer;
     m_input = input;
@@ -17,7 +16,7 @@ void GameMenu::InitGames() {
 }
 
 void GameMenu::Draw() {
-    if (m_gameSelected)
+    if (GameActive())
         DrawCurrentGame();
     else 
         DrawGameMenu();
@@ -25,7 +24,7 @@ void GameMenu::Draw() {
 
 
 void GameMenu::Update() {
-    if (m_gameSelected)
+    if (GameActive())
         UpdateCurrentGame();
     else    
         UpdateGameMenu();
@@ -33,6 +32,9 @@ void GameMenu::Update() {
 
 
 void GameMenu::UpdateCurrentGame() {
+    if (m_input->isPressed(SDLK_ESCAPE)) {
+        m_currentGame = CurrentGame::NOGAME;
+    }
     switch (m_currentGame) {
         case CurrentGame::SNAKEGAME:
             m_snakeGame.Update();
@@ -48,8 +50,6 @@ void GameMenu::UpdateGameMenu() {
     m_snakeButton.Update(m_input);
     if (m_snakeButton.isPressed()) m_currentGame = CurrentGame::SNAKEGAME;
 
-    if (m_currentGame != CurrentGame::NOGAME) m_gameSelected = true;
-
 }
 
 void GameMenu::DrawCurrentGame() {
@@ -60,6 +60,10 @@ void GameMenu::DrawCurrentGame() {
         default:
             break;
     }
+}
+
+bool GameMenu::GameActive() { 
+    return m_currentGame != CurrentGame::NOGAME; 
 }
 
 void GameMenu::DrawGameMenu() {
