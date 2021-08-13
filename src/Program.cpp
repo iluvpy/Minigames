@@ -24,6 +24,7 @@ void Program::Init(const std::string& name) {
 void Program::Start() {
     // main loop
     while (m_window.isOpen()) {
+        Util::Sleep(10);
         m_renderer.Start();
         
         // render here
