@@ -7,7 +7,6 @@
 
 class InputHandler {
 public:
-    InputHandler();
     void PressKey(const SDL_Event& e);
     void ReleaseKey(const SDL_Event& e);
     void PressMouseButton(const SDL_Event& e);
@@ -16,7 +15,6 @@ public:
     bool isReleased(const SDL_KeyCode& code);
     bool isMouseButtonPressed(ubyte button);
     bool isMouseButtonReleased(ubyte button);
-    ~InputHandler();
 private:
     std::unordered_map<int, bool> m_keys;
     std::unordered_map<ubyte, bool> m_buttons; // mouse

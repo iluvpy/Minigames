@@ -1,5 +1,6 @@
 #include "Renderer.hpp"
 
+
 Renderer::Renderer() {}
 
 void Renderer::Init(SDL_Window *window) {

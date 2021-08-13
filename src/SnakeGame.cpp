@@ -4,8 +4,6 @@
 #define FOOD_INTERVAL 5.0f
 
 
-SnakeGame::SnakeGame() {
-}
 
 void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int x, int y, int rectWidth) {
     m_renderer = renderer;
@@ -127,6 +125,3 @@ void SnakeGame::ClearGrid() {
     }
 }
 
-
-SnakeGame::~SnakeGame() {
-}

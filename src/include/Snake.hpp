@@ -16,7 +16,6 @@ class SnakeGame;
 
 class Snake {
 public:
-    Color color;
     Snake();
     void Init(Renderer *renderer, InputHandler *kbHandler, uint length, int head_x, int head_y);
     void Draw() const;

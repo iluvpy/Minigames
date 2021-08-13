@@ -1,10 +1,6 @@
 #include "InputHandler.hpp"
 #include "Utils.hpp"
 
-InputHandler::InputHandler() {
-
-}
-
 void InputHandler::PressKey(const SDL_Event& e) {
     auto it = m_keys.find(Util::GetKeyCode(e));
     if (it != m_keys.end()) 
@@ -59,8 +55,4 @@ bool InputHandler::isMouseButtonPressed(ubyte code) {
 
 bool InputHandler::isMouseButtonReleased(ubyte code) {
     return !isMouseButtonPressed(code);
-}
-
-InputHandler::~InputHandler() {
-
 }

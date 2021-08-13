@@ -2,8 +2,6 @@
 #include "Utils.hpp"
 #include "SnakeGame.hpp"
 
-SnakeFood::SnakeFood()  {}
-
 void SnakeFood::AddNewRandomFood(SnakeGame *game) {
     Point position;
     ubyte tries = 0; // avoid getting trapped in an infinite loop
@@ -30,7 +28,3 @@ bool SnakeFood::FoodWasEaten(SnakeGame *game) {
     }
     return false;
 } 
-
-SnakeFood::~SnakeFood() {
-
-}

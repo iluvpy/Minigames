@@ -12,7 +12,6 @@
 
 class SnakeGame {
 public:
-    SnakeGame();
     void Init(Renderer *renderer, Window *window, InputHandler *kbHandler,int x, int y, int rectWidth=10);
     void Draw();
     void GenApple(); // adds apple to random square on grid
@@ -27,7 +26,6 @@ public:
     int GetRectWidth() const;
     int XtoXIndex(int x);
     int YtoYIndex(int y);
-    ~SnakeGame();
 private:
     Snake m_snake;
     SnakeFood m_food;

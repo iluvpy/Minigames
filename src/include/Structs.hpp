@@ -5,7 +5,8 @@
 enum CurrentGame : ubyte {
     SNAKEGAME,
     PONGGAME,
-    TETRISGAME
+    TETRISGAME,
+    NOGAME
 };
 
 enum Direction2d : ubyte {
@@ -53,6 +54,10 @@ struct Point {
     Point operator-(const Point& other) noexcept {
         return Point{x-other.x, y-other.y}; 
     }
+};
+
+struct Rect {
+    int x, y, w, h;
 };
 
 

@@ -7,6 +7,7 @@
 #include "Window.hpp"
 #include "SnakeGame.hpp"
 #include "InputHandler.hpp"
+#include "GameMenu.hpp"
 
 class Program {
 public:
@@ -23,7 +24,7 @@ private:
     Window m_window;
     Renderer m_renderer;
     InputHandler m_input;
-
+    GameMenu m_gameMenu;
     // games
     SnakeGame m_snake;
 };

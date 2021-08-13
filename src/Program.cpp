@@ -17,6 +17,7 @@ void Program::Init(const std::string& name) {
     m_window.Init(name);
     m_renderer.Init(m_window.getWindowPtr());
 
+    m_gameMenu.Init(&m_renderer, &m_input);
     // init games
     m_snake.Init(&m_renderer, &m_window, &m_input, 0, 0, 40);
 }
@@ -29,10 +30,10 @@ void Program::Start() {
         // render here
         m_renderer.Fill(Color(100, 100, 100), &m_window); // draw background
 
-        m_snake.Draw(); 
-
-        m_renderer.End();
+        m_gameMenu.Draw();
         
+        m_renderer.End();
+
         HandleEvents();
         Update();
     }
@@ -69,11 +70,10 @@ void Program::HandleEvents() {
 }
 
 void Program::Update() {
-    m_snake.Update();
+    m_gameMenu.Update();
 }
 
 Program::~Program() {
-
     std::cout << "exiting..\n";
     SDL_Quit();
 }

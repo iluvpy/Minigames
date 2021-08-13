@@ -17,7 +17,6 @@ public:
     void Start();
     void End();
     ~Renderer();
-
 private:
 
     SDL_Renderer *m_renderer;

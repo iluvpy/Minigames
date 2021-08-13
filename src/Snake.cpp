@@ -3,8 +3,7 @@
 
 
 Snake::Snake() 
-: color(SNAKE_COLOR),
-  m_direction(Direction2d::up),
+: m_direction(Direction2d::up),
   m_isAlive(true)
 {
     m_lastMovementUpdate = Util::GetClock();
