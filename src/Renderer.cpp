@@ -12,7 +12,7 @@ void Renderer::Start() {
 }
 
 void Renderer::Fill(const Color& color, const Window *window) {
-    SDL_Rect r = window->getWindowRect();
+    SDL_Rect r = window->GetWindowRect();
     DrawRect(r.x, r.y, r.w, r.h, color);
 }
 

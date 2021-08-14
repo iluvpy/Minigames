@@ -20,6 +20,7 @@ build obj/inputhandler.o: cc src/InputHandler.cpp
 build obj/guibutton.o: cc src/GUIButton.cpp
 build obj/rect.o: cc src/Rect.cpp
 build obj/gamemenu.o: cc src/GameMenu.cpp
+build obj/deathmessage.o: cc src/DeathMessage.cpp
 
 # build client file
-build client: lnk obj/main.o obj/gamemenu.o obj/rect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
+build client: lnk obj/main.o obj/gamemenu.o obj/deathmessage.o obj/rect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o

@@ -15,7 +15,7 @@ void Program::Init(const std::string& name) {
     srand(time(NULL)); // init random library with seed
     InitSDL();
     m_window.Init(name);
-    m_renderer.Init(m_window.getWindowPtr());
+    m_renderer.Init(m_window.GetWindowPtr());
 
     m_gameMenu.Init(&m_window, &m_renderer, &m_input);
 
@@ -42,7 +42,7 @@ void Program::Start() {
 void Program::HandleEvents() {
 
     while (m_window.Update()){
-        SDL_Event event = m_window.getEvent();
+        SDL_Event event = m_window.GetEvent();
         switch (event.type) {
             case SDL_QUIT:
                 m_window.Close();

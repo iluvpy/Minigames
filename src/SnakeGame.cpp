@@ -9,7 +9,7 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
     m_renderer = renderer;
     m_rectWidth = rectWidth;
     m_input = kbHandler;
-    SDL_Rect r = window->getWindowRect();
+    SDL_Rect r = window->GetWindowRect();
     m_windowW = r.w;
     m_windowH = r.h;
 
@@ -26,6 +26,8 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
     int approx_middleY = (int)GetIndexHeight()/2; // index y
 
     m_snake.Init(m_renderer, m_input, 10, approx_middleX, approx_middleY);
+
+    m_deathMessage.Init(Color(30, 200, 30), window);
 }
 
 
@@ -48,6 +50,8 @@ void SnakeGame::Draw() {
         m_renderer->DrawRect(xi, 0, -1, m_windowH, Color(0, 0, 0));
     }
 
+    if (!m_snake.IsAlive()) m_deathMessage.Draw(m_renderer);
+
 }
 
 // adds apple to random square on grid every m_interval 
@@ -68,10 +72,6 @@ void SnakeGame::Update() {
         }
         GenApple();
     }
-    else {
-        std::cout << "Haha dead, gg\n";
-    }
-
 }
 
 int SnakeGame::GetIndexHeight() const {

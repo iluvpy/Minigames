@@ -6,6 +6,7 @@
 #include "Structs.hpp"
 #include "Utils.hpp"
 #include "SnakeFood.hpp"
+#include "DeathMessage.hpp"
 
 #define SNAKE_GRID_GRAY Color(100, 100, 100)
 #define SNAKE_GRID_APPLE_COLOR Color(200, 30, 30)
@@ -31,6 +32,7 @@ private:
     SnakeFood m_food;
     std::vector<std::vector<SnakeGridRect>> m_grid;
     Renderer *m_renderer;
+    DeathMessage m_deathMessage;
     InputHandler *m_input;
     Clock_t m_lastFoodUpdate;
     int m_windowW, m_windowH;

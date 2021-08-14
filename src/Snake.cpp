@@ -61,14 +61,14 @@ void Snake::Update() {
     if (m_input->isPressed(SDLK_w)) {
         m_direction = Direction2d::up;
     }
-    if (m_input->isPressed(SDLK_s)) {
-        m_direction = Direction2d::down;
-    }
     if (m_input->isPressed(SDLK_a)) {
         m_direction = Direction2d::left;
     }
     if (m_input->isPressed(SDLK_d)) {
         m_direction = Direction2d::right;
+    }
+    if (m_input->isPressed(SDLK_s)) {
+        m_direction = Direction2d::down;
     }
 
     Clock_t now = Util::GetClock();

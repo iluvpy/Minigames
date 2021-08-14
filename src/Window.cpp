@@ -9,7 +9,7 @@ void Window::Init(const std::string& name) {
     m_window = SDL_CreateWindow(name.c_str(), m_rect.x, m_rect.y, m_rect.w, m_rect.h, SDL_WINDOW_FULLSCREEN);
 }
 
-const SDL_Rect Window::getWindowRect() const {
+const SDL_Rect Window::GetWindowRect() const {
     return m_rect;
 }
 
@@ -20,11 +20,11 @@ bool Window::isOpen() const {
 void Window::Close() { 
     m_isOpen = false; 
 }
-SDL_Event Window::getEvent() const { 
+SDL_Event Window::GetEvent() const { 
     return m_events; 
 }
 
-SDL_Window *Window::getWindowPtr() { 
+SDL_Window *Window::GetWindowPtr() { 
     return m_window; 
 } 
 

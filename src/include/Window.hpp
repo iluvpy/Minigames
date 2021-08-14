@@ -10,11 +10,11 @@ public:
     Window();
     void Init(const std::string& name);
     ubyte Update();
-    const SDL_Rect getWindowRect() const;
+    const SDL_Rect GetWindowRect() const;
     bool isOpen() const;
     void Close();
-    SDL_Event getEvent() const;
-    SDL_Window *getWindowPtr();
+    SDL_Event GetEvent() const;
+    SDL_Window *GetWindowPtr();
     ~Window();
 private:
 
