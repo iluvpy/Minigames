@@ -48,7 +48,7 @@ void GameMenu::UpdateGameMenu() {
     
     // XXX add update buttons to play a game
     m_snakeButton.Update(m_input);
-    if (m_snakeButton.isPressed()) m_currentGame = CurrentGame::SNAKEGAME;
+    if (m_snakeButton.WasReleased()) m_currentGame = CurrentGame::SNAKEGAME;
 
 }
 
