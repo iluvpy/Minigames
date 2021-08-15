@@ -6,10 +6,11 @@
 class Color {
 public:
     Color(ubyte r=255, ubyte g=255, ubyte b=255, ubyte a=255);
-    ubyte getR() const;
+    ubyte GetR() const;
     ubyte getG() const;
     ubyte getB() const;
     ubyte getA() const;
+    SDL_Color GetSdlColor() const;
     ~Color();
 
 private:

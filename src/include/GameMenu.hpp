@@ -7,6 +7,7 @@
 #include "Structs.hpp"
 #include "Rect.hpp"
 #include "SnakeGame.hpp"
+#include "GUIText.hpp"
 
 class GameMenu {
 public:
@@ -31,5 +32,8 @@ private:
 
     // games
     SnakeGame m_snakeGame;
+
+    // fonts
+    GUIText m_testText;
 
 };

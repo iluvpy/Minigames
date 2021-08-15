@@ -56,7 +56,7 @@ struct Point {
     }
 };
 
-struct RectS {
+struct RectStruct {
     int x, y, w, h;
 };
 

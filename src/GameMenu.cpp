@@ -1,5 +1,9 @@
 #include  "GameMenu.hpp"
 
+#include <filesystem>
+
+#define DEFAULT_FONT_PATH "./res/fonts/default.ttf"
+
 void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input) {
     m_window = window;
     m_renderer = renderer;
@@ -8,6 +12,7 @@ void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input) {
 
     m_snakeButton.Init(100, 100, 60, 60, Color(), Color(255, 50, 50));
 
+    m_testText.Init(m_renderer, 300, 300, "Hello world", DEFAULT_FONT_PATH, 52);
     InitGames();
 }
 
@@ -68,6 +73,7 @@ bool GameMenu::GameActive() {
 
 void GameMenu::DrawGameMenu() {
     m_snakeButton.Draw(m_renderer);
+    m_testText.DrawText();
 }
 
 

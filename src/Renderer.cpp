@@ -17,7 +17,7 @@ void Renderer::Fill(const Color& color, const Window *window) {
 }
 
 void Renderer::SetColor(const Color& color) {
-    SDL_SetRenderDrawColor(m_renderer, color.getR(), color.getG(), color.getB(), color.getA());
+    SDL_SetRenderDrawColor(m_renderer, color.GetR(), color.getG(), color.getB(), color.getA());
 }
 
 void Renderer::DrawRect(int x, int y, int w, int h, const Color& color) {
@@ -34,6 +34,9 @@ void Renderer::End() {
     SDL_RenderPresent(m_renderer);
 }
 
+SDL_Renderer *Renderer::GetRendererPtr() {
+    return m_renderer;
+}
 
 Renderer::~Renderer() {
     SDL_DestroyRenderer(m_renderer);

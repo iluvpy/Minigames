@@ -9,6 +9,10 @@ void Program::InitSDL() {
         std::cerr << "error while initializing\n" <<  "error: " <<  SDL_GetError() << std::endl;
         this->~Program();
     }
+    if (TTF_Init() != 0) {
+        std::cerr <<  "error while initializing sdl ttf\n";
+        this->~Program();
+    }
 }
 
 void Program::Init(const std::string& name) {

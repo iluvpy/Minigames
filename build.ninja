@@ -1,5 +1,5 @@
 cflags = -std=c++17 -Werror -Wall -g -DDebug -I./src/include/
-lflags = -lSDL2 
+lflags = -lSDL2 -lSDL2_ttf
 cxx = clang++ 
 
 rule cc
@@ -21,6 +21,6 @@ build obj/guibutton.o: cc src/GUIButton.cpp
 build obj/rect.o: cc src/Rect.cpp
 build obj/gamemenu.o: cc src/GameMenu.cpp
 build obj/deathmessage.o: cc src/DeathMessage.cpp
-
+build obj/guitext.o: cc src/GUIText.cpp
 # build client file
-build client: lnk obj/main.o obj/gamemenu.o obj/deathmessage.o obj/rect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
+build client: lnk obj/main.o obj/gamemenu.o obj/guitext.o obj/deathmessage.o obj/rect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
