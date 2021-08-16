@@ -9,7 +9,7 @@ void SnakeFood::AddNewRandomFood(SnakeGame *game) {
         position.x = Util::GetRandomInt(game->GetIndexWidth());
         position.y = Util::GetRandomInt(game->GetIndexHeight());
         tries++;
-    } while (game->Get(position.x, position.y) != SnakeRectState::None && tries < 10);
+    } while (game->Get(position.x, position.y) != SnakeRectState::Grid && tries < 10);
     m_foodPositions.push_back(position);
 }
 

@@ -16,7 +16,7 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
     for (int iy = 0; iy < m_windowH; iy += m_rectWidth) {
         std::vector<SnakeGridRect> tmp;
         for (int ix = 0; ix < m_windowW; ix += m_rectWidth) {
-            SnakeGridRect rect {ix, iy, m_rectWidth, SnakeRectState::None};
+            SnakeGridRect rect {ix, iy, m_rectWidth, SnakeRectState::Grid};
             tmp.push_back(rect);
         }
         m_grid.push_back(tmp);
@@ -107,7 +107,7 @@ SnakeRectState SnakeGame::Get(int x_index, int y_index) {
     if (PosExists(x_index, y_index)) {
         return m_grid[y_index][x_index].state;
     }
-    return SnakeRectState::None;
+    return SnakeRectState::Grid;
 }
 
 bool SnakeGame::PosExists(int x_index, int y_index) {
@@ -120,7 +120,7 @@ bool SnakeGame::PosExists(int x_index, int y_index) {
 void SnakeGame::ClearGrid() {
     for (auto& rects : m_grid) {
         for (auto& rect : rects) {
-            rect.state = SnakeRectState::None;
+            rect.state = SnakeRectState::Grid;
         }
     }
 }

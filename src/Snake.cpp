@@ -48,8 +48,14 @@ void Snake::Shrink() {
 
 
 void Snake::AddSnakeToGame(SnakeGame *game) {
-    for (auto& position : m_snakePositions) {
-        if (!game->Set(position.x, position.y, SnakeRectState::SnakeSection)) {
+    Point head = m_snakePositions[0];
+    if (!game->Set(head.x, head.y, SnakeRectState::SnakeHead)) {            
+        m_isAlive = false;
+        return;
+    }
+
+    for (int i = 1; i < m_snakePositions.size(); i++) {
+        if (!game->Set(m_snakePositions[i].x, m_snakePositions[i].y, SnakeRectState::SnakeSection)) {
             m_isAlive = false;
             break;
         }   

@@ -17,9 +17,10 @@ enum Direction2d : ubyte {
 };
 
 enum SnakeRectState : ubyte {
-    None, // empty
+    Grid, // empty
     Food,
-    SnakeSection // part of snake
+    SnakeSection, // part of snake
+    SnakeHead
 };
 
 struct Point {

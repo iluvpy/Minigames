@@ -8,8 +8,9 @@
 #include "Structs.hpp"
 #include "InputHandler.hpp"
 
-#define SNAKE_COLOR Color(0, 230, 80)
+#define SNAKE_COLOR Color(0, 180, 40)
 #define SNAKE_MOVEMENT_INTERVAL 0.3f // snake moves 1 tile each INTERVAL seconds
+#define SNAKE_HEAD_COLOR Color(0, 250, 40)
 // forward declaration 
 class SnakeGame;
 
