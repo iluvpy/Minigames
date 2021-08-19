@@ -13,6 +13,8 @@ public:
     const SDL_Rect GetWindowRect() const;
     bool isOpen() const;
     void Close();
+    int GetWidth() const;
+    int GetHeight() const;
     SDL_Event GetEvent() const;
     SDL_Window *GetWindowPtr();
     ~Window();

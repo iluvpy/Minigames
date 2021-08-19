@@ -12,7 +12,7 @@ void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input) {
 
     m_snakeButton.Init(100, 100, 60, 60, Color(), Color(255, 50, 50));
 
-    m_testText.Init(m_renderer, 300, 300, "Hello world", DEFAULT_FONT_PATH, 52);
+    m_testText.Init(m_renderer, 300, 300, "Hello world", nullptr, DEFAULT_FONT_PATH);
     InitGames();
 }
 

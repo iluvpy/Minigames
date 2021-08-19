@@ -31,6 +31,12 @@ SDL_Window *Window::GetWindowPtr() {
 ubyte Window::Update() {
     return (ubyte)SDL_PollEvent(&m_events);
 }
+int Window::GetWidth() const {
+    return m_rect.w;
+}
+int Window::GetHeight() const {
+    return m_rect.h;
+}
 
 Window::~Window() {
     SDL_DestroyWindow(m_window);

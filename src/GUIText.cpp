@@ -5,12 +5,15 @@ GUIText::GUIText() {
 
 }
 
-GUIText::GUIText(Renderer *renderer, int x, int y, const std::string& text, const std::string& fontPath, int fontSize, const Color& color) {
-    Init(renderer, x, y, text, fontPath, fontSize, color);
+GUIText::GUIText(Renderer *renderer, int x, int y, const std::string& text, TTF_Font *font, const std::string& fontPath, int fontSize, const Color& color) {
+    Init(renderer, x, y, text, font, fontPath, fontSize, color);
 }
 
-void GUIText::Init(Renderer *renderer, int x, int y, const std::string& text, const std::string& fontPath, int fontSize, const Color& color) {
-    m_font = TTF_OpenFont(fontPath.c_str(), fontSize);
+void GUIText::Init(Renderer *renderer, int x, int y, const std::string& text, TTF_Font *font, const std::string& fontPath, int fontSize, const Color& color) {
+    if (font)
+        m_font = font;
+    else
+        m_font = TTF_OpenFont(fontPath.c_str(), fontSize);
     if (!m_font) std::cout << "could not open font\n";
     m_color = color;
     m_text = text;
@@ -29,7 +32,8 @@ void GUIText::SetText(const std::string& text) {
 
     // update width and height
     int w, h;
-    TTF_SizeText(m_font, text.c_str(), &w, &h);  
+    if (TTF_SizeText(m_font, text.c_str(), &w, &h)) 
+        std::cout << "error while calculating width and height; " << TTF_GetError() << std::endl;
     m_rect.w = w;
     m_rect.h = h;
 }
@@ -44,6 +48,13 @@ int GUIText::GetWidth() {
 
 int GUIText::GetHeight() {
     return m_rect.w;
+}
+
+RectStruct GUIText::GetRect() const {
+    return m_rect;
+}
+void GUIText::SetRect(const RectStruct& rect) {
+    m_rect = rect;
 }
 
 GUIText::~GUIText() {

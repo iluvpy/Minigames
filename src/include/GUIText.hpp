@@ -10,12 +10,14 @@
 class GUIText {
 public:
     GUIText();
-    GUIText(Renderer *renderer, int x, int y, const std::string& text, const std::string& fontPath="./res/fonts/default.ttf", int fontSize=13, const Color& color=Color(0,0,0));
-    void Init(Renderer *renderer, int x, int y, const std::string& text, const std::string& fontPath="./res/fonts/default.ttf", int fontSize=13, const Color& color=Color(0,0,0));
+    GUIText(Renderer *renderer, int x, int y, const std::string& text, TTF_Font *font=nullptr, const std::string& fontPath="./res/fonts/default.ttf", int fontSize=28, const Color& color=Color(0,0,0));
+    void Init(Renderer *renderer, int x, int y, const std::string& text, TTF_Font *font=nullptr, const std::string& fontPath="./res/fonts/default.ttf", int fontSize=28, const Color& color=Color(0,0,0));
     void DrawText();
     void SetText(const std::string& text);
     int GetWidth();
     int GetHeight();
+    RectStruct GetRect() const;
+    void SetRect(const RectStruct& rect);
     ~GUIText();
 private:
     TTF_Font *m_font=nullptr;

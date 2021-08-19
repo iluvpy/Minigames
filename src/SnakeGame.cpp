@@ -27,7 +27,7 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
 
     m_snake.Init(m_renderer, m_input, 10, approx_middleX, approx_middleY);
 
-    m_deathMessage.Init(Color(30, 200, 30), window);
+    m_deathMessage.Init(m_renderer, Color(30, 200, 30), window);
 }
 
 
@@ -50,7 +50,7 @@ void SnakeGame::Draw() {
         m_renderer->DrawRect(xi, 0, -1, m_windowH, Color(0, 0, 0));
     }
 
-    if (!m_snake.IsAlive()) m_deathMessage.Draw(m_renderer);
+    if (!m_snake.IsAlive()) m_deathMessage.Draw();
 
 }
 
