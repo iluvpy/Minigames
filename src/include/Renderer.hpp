@@ -15,10 +15,9 @@ public:
     void Init(SDL_Window *window);
     void Fill(const Color& color, const Window *window);
     void DrawRect(const Rect& rect);
-	void DrawText(const Point& pos, 
-				  const std::string& text, 
-				  int fontSize=28, 
-				  const Color& color=Color(0, 0, 0));
+	void DrawText(const Point& pos, const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
+	void DrawText(int x, int y,const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
+	RectStruct GetTextRect(const std::string& text, int fontSize=28);
     void SetColor(const Color& color);
     void DrawRect(int x, int y, int w, int h, const Color& color=Color());
     void Start();

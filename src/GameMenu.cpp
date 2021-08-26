@@ -71,7 +71,10 @@ bool GameMenu::GameActive() {
 
 void GameMenu::DrawGameMenu() {
     m_snakeButton.Draw(m_renderer);
-	m_renderer->DrawText(Point{100, 100}, "hello world :p");
+	int fontSize = 42;
+
+	RectStruct rect = m_renderer->GetTextRect("Game Menu", fontSize);
+	m_renderer->DrawText((int)m_window->GetWidth()/2-rect.w/2, 100, "Game Menu", fontSize);
 }
 
 

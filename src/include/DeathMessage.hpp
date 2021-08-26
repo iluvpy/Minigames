@@ -12,5 +12,6 @@ public:
     void Draw();
 private:
     Rect m_rect;
+	Point m_textSize;
     Renderer *m_renderer;
 };

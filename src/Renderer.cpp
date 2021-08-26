@@ -31,10 +31,8 @@ void Renderer::DrawRect(const Rect& rect) {
     DrawRect(rect.GetX(), rect.GetY(), rect.GetW(), rect.GetH(), rect.GetColor());
 }
 
-void Renderer::DrawText(const Point& pos, 
-				        const std::string& text, 
-						int fontSize, 
-						const Color& color) {
+void Renderer::DrawText(const Point& pos, const std::string& text, int fontSize, const Color& color) 
+{
 
 	auto it = m_textCache.find(text);
 	if (it != m_textCache.end()) it->second->DrawText();
@@ -44,7 +42,23 @@ void Renderer::DrawText(const Point& pos,
 		gui_text->Init(this, pos.x, pos.y, text, DEFAULT_FONT_PATH, fontSize, color);
 		m_textCache[text] = gui_text;
 	}
+}
 
+void Renderer::DrawText(int x, int y, const std::string& text, int fontSize, const Color& color) 
+{
+	DrawText(Point{x, y}, text, fontSize, color);
+}
+
+RectStruct Renderer::GetTextRect(const std::string& text, int fontSize) {
+	GUIText *text__;
+	// check cache
+	auto it = m_textCache.find(text);
+	if (it != m_textCache.end()) text__ = it->second;
+	else {
+		text__ = new GUIText;
+		text__->Init(this, 0, 0, text, DEFAULT_FONT_PATH, fontSize, Color(0, 0, 0));
+	}
+	return text__->GetRect();
 }
 
 
