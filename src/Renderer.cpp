@@ -1,5 +1,6 @@
 #include "Renderer.hpp"
 
+#define DEFAULT_FONT_PATH "./res/fonts/default.ttf"
 
 Renderer::Renderer() {}
 
@@ -30,6 +31,23 @@ void Renderer::DrawRect(const Rect& rect) {
     DrawRect(rect.GetX(), rect.GetY(), rect.GetW(), rect.GetH(), rect.GetColor());
 }
 
+void Renderer::DrawText(const Point& pos, 
+				        const std::string& text, 
+						int fontSize, 
+						const Color& color) {
+
+	auto it = m_textCache.find(text);
+	if (it != m_textCache.end()) it->second->DrawText();
+	else {
+		// need to use 'new' causes segfault if i dont (and does not draw text)
+		GUIText *gui_text = new GUIText;
+		gui_text->Init(this, pos.x, pos.y, text, DEFAULT_FONT_PATH, fontSize, color);
+		m_textCache[text] = gui_text;
+	}
+
+}
+
+
 void Renderer::End() {
     SDL_RenderPresent(m_renderer);
 }
@@ -40,4 +58,7 @@ SDL_Renderer *Renderer::GetRendererPtr() {
 
 Renderer::~Renderer() {
     SDL_DestroyRenderer(m_renderer);
+	for (auto ptr = m_textCache.begin(); ptr != m_textCache.end(); ptr++) {
+		delete ptr->second;
+	}
 }

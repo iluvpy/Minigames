@@ -1,20 +1,19 @@
 #include "GUIText.hpp"
-#include <iostream>
+#include "Renderer.hpp"
 
 GUIText::GUIText() {
-
+	m_surface = nullptr;
+	m_font = nullptr;
+	m_texture = nullptr;
 }
 
-GUIText::GUIText(Renderer *renderer, int x, int y, const std::string& text, TTF_Font *font, const std::string& fontPath, int fontSize, const Color& color) {
-    Init(renderer, x, y, text, font, fontPath, fontSize, color);
+GUIText::GUIText(Renderer *renderer, int x, int y, const std::string& text, const std::string& fontPath, int fontSize, const Color& color) {
+    Init(renderer, x, y, text, fontPath, fontSize, color);
 }
 
-void GUIText::Init(Renderer *renderer, int x, int y, const std::string& text, TTF_Font *font, const std::string& fontPath, int fontSize, const Color& color) {
-    if (font)
-        m_font = font;
-    else
-        m_font = TTF_OpenFont(fontPath.c_str(), fontSize);
-    if (!m_font) std::cout << "could not open font\n";
+void GUIText::Init(Renderer *renderer, int x, int y, const std::string& text, const std::string& fontPath, int fontSize, const Color& color) {
+    m_font = TTF_OpenFont(fontPath.c_str(), fontSize);
+
     m_color = color;
     m_text = text;
     m_renderer = renderer;
@@ -24,8 +23,8 @@ void GUIText::Init(Renderer *renderer, int x, int y, const std::string& text, TT
 
 
 void GUIText::SetText(const std::string& text) {
-    if (m_surface) SDL_FreeSurface(m_surface);
-    if (m_texture) SDL_DestroyTexture(m_texture);
+    if (m_surface) SDL_FreeSurface(m_surface); 
+    if (m_texture) SDL_DestroyTexture(m_texture); 
     
     m_surface = TTF_RenderText_Solid(m_font, text.c_str(), m_color.GetSdlColor()); 
     m_texture = SDL_CreateTextureFromSurface(m_renderer->GetRendererPtr(), m_surface); 

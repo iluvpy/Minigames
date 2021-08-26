@@ -33,7 +33,4 @@ private:
     // games
     SnakeGame m_snakeGame;
 
-    // fonts
-    GUIText m_testText;
-
 };

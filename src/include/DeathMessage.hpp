@@ -12,6 +12,5 @@ public:
     void Draw();
 private:
     Rect m_rect;
-    GUIText m_text;
     Renderer *m_renderer;
 };

@@ -64,16 +64,16 @@ void Snake::AddSnakeToGame(SnakeGame *game) {
 
 void Snake::Update() {
 
-    if (m_input->isPressed(SDLK_w)) {
+    if (m_input->isPressed(SDLK_w) && m_direction != Direction2d::down) {
         m_direction = Direction2d::up;
     }
-    if (m_input->isPressed(SDLK_a)) {
+    if (m_input->isPressed(SDLK_a) && m_direction != Direction2d::right) {
         m_direction = Direction2d::left;
     }
-    if (m_input->isPressed(SDLK_d)) {
+    if (m_input->isPressed(SDLK_d) && m_direction != Direction2d::left) {
         m_direction = Direction2d::right;
     }
-    if (m_input->isPressed(SDLK_s)) {
+    if (m_input->isPressed(SDLK_s) && m_direction != Direction2d::up) {
         m_direction = Direction2d::down;
     }
 
