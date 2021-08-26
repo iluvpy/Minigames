@@ -1,5 +1,7 @@
 #include "Utils.hpp"
 
+#include "SnakeGame.hpp"
+#include "Snake.hpp"
 
 void Util::Sleep(uint ms) {
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
@@ -8,6 +10,31 @@ void Util::Sleep(uint ms) {
 int64 Util::GetTimeMs() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
+
+
+FPoint Util::Rotate(const FPoint& p, const FPoint& origin, float angle) {
+	float _sin = sin(angle);
+	float _cos = cos(angle);
+
+	float ox = origin.x;
+	float oy = origin.y;
+
+	float x = p.x - ox;
+	float y = p.y - oy;
+
+	float new_x = x * _cos - y * _sin;
+	float new_y = y * _cos + x * _sin;
+
+	new_x += ox;
+	new_y += oy;
+
+	return FPoint{new_x, new_y};
+}
+
+float Util::toRad(float angle) {
+	return M_PI / 180 * angle; 
+}
+
 
 
 Color Util::GetSnakeGridRectColor(const SnakeGridRect& rect) {

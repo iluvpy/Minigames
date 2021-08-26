@@ -57,6 +57,41 @@ struct Point {
     }
 };
 
+
+struct FPoint {
+    float x, y;
+
+    bool operator==(const FPoint& other) noexcept {
+        return ((x == other.x) && (y == other.y));
+    }
+
+    FPoint& operator=(const FPoint& other) noexcept {
+        x = other.x;
+        y = other.y;
+        return *this;
+    }
+
+    FPoint& operator+=(const FPoint& other) noexcept {
+        x += other.x;
+        y += other.y;
+        return *this;
+    }
+
+    FPoint& operator-=(const FPoint& other) noexcept {
+        x -= other.x;
+        y -= other.y;
+        return *this;
+    }
+
+    FPoint operator+(const FPoint& other) noexcept {
+        return FPoint{x+other.x, y+other.y}; 
+    }
+
+    FPoint operator-(const FPoint& other) noexcept {
+        return FPoint{x-other.x, y-other.y}; 
+    }
+};
+
 struct Rect {
     int x, y, w, h;
 };

@@ -7,6 +7,8 @@
 #include "Structs.hpp"
 #include "SnakeGame.hpp"
 #include "GameButton.hpp"
+#include "PongGame.hpp"
+
 
 class GameMenu {
 public:
@@ -15,6 +17,7 @@ public:
     void Update();
 private:
     void InitGames();
+	void InitButtons();
     void UpdateGameMenu();
     void DrawGameMenu();
     void UpdateCurrentGame();
@@ -28,9 +31,10 @@ private:
 
     // buttons
     GameButton m_snakeButton;
-
+	GameButton m_pongButton;
     // games
     SnakeGame m_snakeGame;
+	PongGame m_pongGame;
 
 
 };

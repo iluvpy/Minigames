@@ -4,17 +4,18 @@
 #include <chrono>
 #include <ctime>
 #include <random>
+#include <cmath>
 
 #include "Types.hpp"
 #include "Color.hpp"
 #include "Structs.hpp"
-#include "Snake.hpp"
-#include "SnakeGame.hpp"
 
 namespace Util {
     void Sleep(uint ms);
     int64 GetTimeMs();
     Color GetSnakeGridRectColor(const SnakeGridRect& rect);
+	FPoint Rotate(const FPoint& p, const FPoint& origin, float angle);
+	float toRad(float angle);
     inline Clock_t GetClock() { return std::chrono::steady_clock::now(); }
     // returns clock1-clock2 in seconds
     float GetClockDifference(const Clock_t& clock1, const Clock_t& clock2);

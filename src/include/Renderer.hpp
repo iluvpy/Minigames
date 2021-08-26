@@ -8,6 +8,8 @@
 #include "Window.hpp"
 #include "GUIRect.hpp"
 #include "GUIText.hpp"
+#include "Utils.hpp"
+#include "Structs.hpp"
 
 class Renderer {
 public:
@@ -15,6 +17,7 @@ public:
     void Init(SDL_Window *window);
     void Fill(const Color& color, const Window *window);
     void DrawRect(const GUIRect& rect);
+	void DrawCircle(float x, float y, float radius, const Color& color=Color(0, 0, 0));
 	void DrawText(const Point& pos, const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
 	void DrawText(int x, int y,const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
 	Rect GetTextRect(const std::string& text, int fontSize=28);

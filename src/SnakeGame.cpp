@@ -1,8 +1,8 @@
 #include "SnakeGame.hpp"
 #include "SnakeFood.hpp"
+#include "Snake.hpp"
 
 #define FOOD_INTERVAL 5.0f
-
 
 
 void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int rectWidth) {

@@ -10,6 +10,7 @@
 
 #define SNAKE_GRID_GRAY Color(100, 100, 100)
 #define SNAKE_GRID_APPLE_COLOR Color(200, 30, 30)
+#define SNAKE_GAME_DEFAULT_RECT_WIDTH 60
 
 class SnakeGame {
 public:

@@ -31,6 +31,24 @@ void Renderer::DrawRect(const GUIRect& rect) {
     DrawRect(rect.GetX(), rect.GetY(), rect.GetW(), rect.GetH(), rect.GetColor());
 }
 
+void Renderer::DrawCircle(float x, float y, float radius, const Color& color) {
+	SetColor(color);
+
+	for (int w = 0; w < radius * 2; w++)
+    {
+        for (int h = 0; h < radius * 2; h++)
+        {
+            int dx = radius - w; // horizontal offset
+            int dy = radius - h; // vertical offset
+            if ((dx*dx + dy*dy) <= (radius * radius))
+            {
+                SDL_RenderDrawPoint(m_renderer, x + dx, y + dy);
+            }
+        }
+    }
+
+}
+
 void Renderer::DrawText(const Point& pos, const std::string& text, int fontSize, const Color& color) {
 	DrawText(pos.x, pos.y, text, fontSize, color);
 }

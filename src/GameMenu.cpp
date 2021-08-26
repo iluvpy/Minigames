@@ -9,12 +9,25 @@ void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input) {
     m_input = input;
     m_currentGame = CurrentGame::NOGAME;
 
-	m_snakeButton.Init(m_renderer, 200, 200, "./res/img/snake.png", 5, Color(100, 100, 100), Color(0, 0, 0));
+	InitButtons();
     InitGames();
 }
 
+void GameMenu::InitButtons() {
+	Color background(100, 100, 100);
+	Color outline(60, 60, 60);
+	int outlineWidth = 5;
+
+	int x = 200;
+	int y = 200;
+	int spacing = 150;
+	m_snakeButton.Init(m_renderer, x, y, "./res/img/snake3.png", outlineWidth, background, outline);
+	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/img/pong.png", outlineWidth, background, outline);
+}
+
 void GameMenu::InitGames() {
-    m_snakeGame.Init(m_renderer, m_window, m_input, 60);
+    m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_DEFAULT_RECT_WIDTH);
+	m_pongGame.Init(m_renderer, m_window, m_input);
 }
 
 void GameMenu::Draw() {
@@ -41,6 +54,9 @@ void GameMenu::UpdateCurrentGame() {
         case CurrentGame::SNAKEGAME:
             m_snakeGame.Update();
             break;
+		case CurrentGame::PONGGAME:
+			m_pongGame.Update();
+			break;
         default:
             break;
     }
@@ -52,6 +68,9 @@ void GameMenu::UpdateGameMenu() {
     m_snakeButton.Update(m_input);
     if (m_snakeButton.GetButton().WasReleased()) m_currentGame = CurrentGame::SNAKEGAME;
 
+	m_pongButton.Update(m_input);
+	if (m_pongButton.GetButton().WasReleased()) m_currentGame = CurrentGame::PONGGAME;
+
 }
 
 void GameMenu::DrawCurrentGame() {
@@ -59,6 +78,9 @@ void GameMenu::DrawCurrentGame() {
         case CurrentGame::SNAKEGAME:
             m_snakeGame.Draw();
             break;
+		case CurrentGame::PONGGAME:
+			m_pongGame.Draw();
+			break;
         default:
             break;
     }
@@ -71,6 +93,7 @@ void GameMenu::DrawGameMenu() {
 	m_renderer->DrawText((int)m_window->GetWidth()/2-rect.w/2, 100, "Game Menu", fontSize);
 
 	m_snakeButton.Draw();
+	m_pongButton.Draw();
 }
 
 
