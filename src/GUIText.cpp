@@ -49,10 +49,10 @@ int GUIText::GetHeight() {
     return m_rect.w;
 }
 
-RectStruct GUIText::GetRect() const {
+Rect GUIText::GetRect() const {
     return m_rect;
 }
-void GUIText::SetRect(const RectStruct& rect) {
+void GUIText::SetRect(const Rect& rect) {
     m_rect = rect;
 }
 

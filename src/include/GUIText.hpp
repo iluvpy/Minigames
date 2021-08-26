@@ -18,8 +18,8 @@ public:
     void SetText(const std::string& text);
     int GetWidth();
     int GetHeight();
-    RectStruct GetRect() const;
-    void SetRect(const RectStruct& rect);
+    Rect GetRect() const;
+    void SetRect(const Rect& rect);
     ~GUIText();
 private:
 
@@ -29,6 +29,6 @@ private:
     Renderer *m_renderer;
 
     Color m_color;
-    RectStruct m_rect;
+    Rect m_rect;
     std::string m_text;
 };

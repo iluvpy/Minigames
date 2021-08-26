@@ -2,11 +2,11 @@
 
 
 
-void GUIButton::Init(int x , int y, int w, int h, const Color& normalColor, const Color& pressColor) {
-    Init(Rect(x, y, w, h), normalColor, pressColor);
+void GUIButton::Init(int x, int y, int w, int h, const Color& normalColor, const Color& pressColor) {
+    Init(GUIRect(x, y, w, h), normalColor, pressColor);
 }
 
-void GUIButton::Init(const Rect& rect, const Color& normalColor, const Color& pressColor)  {
+void GUIButton::Init(const GUIRect& rect, const Color& normalColor, const Color& pressColor)  {
     m_rect = rect;
     m_rect.SetColor(normalColor);
     m_normalColor = normalColor;

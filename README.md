@@ -22,7 +22,7 @@ run `sudo pacman -S sdl2 sdl2_ttf sdl2_image ninja clang`
 ### Debian based OS
 run `sudo apt install libsdl2-dev libsdl2-ttf-dev libsdl2-image-2.0-0-dev ninja clang`
 
-### Windows 
+### Windows (NOT WORKING)
 install Mingw on your windows machine. Then download the static .lib files of the needed libraries <br>
 from their websites: <br>
 - Download the development libraries from https://www.libsdl.org/download-2.0.php for sdl2 

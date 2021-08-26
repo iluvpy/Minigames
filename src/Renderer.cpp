@@ -27,29 +27,27 @@ void Renderer::DrawRect(int x, int y, int w, int h, const Color& color) {
     SDL_RenderFillRect(m_renderer, &r);
 }
 
-void Renderer::DrawRect(const Rect& rect) {
+void Renderer::DrawRect(const GUIRect& rect) {
     DrawRect(rect.GetX(), rect.GetY(), rect.GetW(), rect.GetH(), rect.GetColor());
 }
 
-void Renderer::DrawText(const Point& pos, const std::string& text, int fontSize, const Color& color) 
-{
+void Renderer::DrawText(const Point& pos, const std::string& text, int fontSize, const Color& color) {
+	DrawText(pos.x, pos.y, text, fontSize, color);
+}
 
+void Renderer::DrawText(int x, int y, const std::string& text, int fontSize, const Color& color) 
+{
 	auto it = m_textCache.find(text);
 	if (it != m_textCache.end()) it->second->DrawText();
 	else {
 		// need to use 'new' causes segfault if i dont (and does not draw text)
 		GUIText *gui_text = new GUIText;
-		gui_text->Init(this, pos.x, pos.y, text, DEFAULT_FONT_PATH, fontSize, color);
+		gui_text->Init(this, x, y, text, DEFAULT_FONT_PATH, fontSize, color);
 		m_textCache[text] = gui_text;
 	}
 }
 
-void Renderer::DrawText(int x, int y, const std::string& text, int fontSize, const Color& color) 
-{
-	DrawText(Point{x, y}, text, fontSize, color);
-}
-
-RectStruct Renderer::GetTextRect(const std::string& text, int fontSize) {
+Rect Renderer::GetTextRect(const std::string& text, int fontSize) {
 	GUIText *text__;
 	// check cache
 	auto it = m_textCache.find(text);

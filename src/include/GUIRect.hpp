@@ -6,9 +6,9 @@
 // forward declaration
 class Renderer;
 
-class Rect {
+class GUIRect {
 public:
-    Rect(int x = 0, int y = 0, int w = 0, int h = 0, const Color& color = Color());
+    GUIRect(int x = 0, int y = 0, int w = 0, int h = 0, const Color& color = Color());
     void Init(int x = 0, int y = 0, int w = 0, int h = 0, const Color& color = Color());
     void Draw(Renderer *renderer);
     void SetColor(const Color& color);
@@ -18,7 +18,7 @@ public:
     int GetH() const;
     bool IsOntop(const Point& pos);
     Color GetColor() const;
-    ~Rect();
+    ~GUIRect();
 private:
     int m_x, m_y, m_w, m_h;
     Color m_color;

@@ -12,7 +12,7 @@ void DeathMessage::Init(Renderer *renderer, const Color& backgroundColor, Window
     int y = (int)(windowH/2-h/2); // middle
     m_rect.Init(x, y, w, h, backgroundColor);
 
-	RectStruct text_rext = m_renderer->GetTextRect(DEATH_MESSAGE);
+	Rect text_rext = m_renderer->GetTextRect(DEATH_MESSAGE);
 	m_textSize = {text_rext.w, text_rext.h};
 
 }

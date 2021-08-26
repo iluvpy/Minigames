@@ -5,9 +5,8 @@
 #include "InputHandler.hpp"
 #include "GUIButton.hpp"
 #include "Structs.hpp"
-#include "Rect.hpp"
 #include "SnakeGame.hpp"
-#include "GUIText.hpp"
+#include "GameButton.hpp"
 
 class GameMenu {
 public:
@@ -28,9 +27,10 @@ private:
     CurrentGame m_currentGame;
 
     // buttons
-    GUIButton m_snakeButton;
+    GameButton m_snakeButton;
 
     // games
     SnakeGame m_snakeGame;
+
 
 };

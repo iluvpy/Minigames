@@ -7,12 +7,18 @@ Program::Program()
 void Program::InitSDL() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cerr << "error while initializing\n" <<  "error: " <<  SDL_GetError() << std::endl;
-        this->~Program();
+        m_window.Close();
     }
     if (TTF_Init() != 0) {
         std::cerr <<  "error while initializing sdl ttf\n";
-        this->~Program();
+        m_window.Close();
     }
+	
+	int flags=IMG_INIT_JPG|IMG_INIT_PNG;
+	if ((IMG_Init(flags) & flags) != flags) {
+		std::cerr << "error while initializing sdl image\n" << "error: " <<  IMG_GetError();
+		m_window.Close();
+	}
 }
 
 void Program::Init(const std::string& name) {

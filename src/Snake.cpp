@@ -39,6 +39,7 @@ void Snake::Grow(SnakeGame *game) {
 
 }
 
+// Why do i need this again? // XXX: ?
 void Snake::Shrink() {
     if (m_snakePositions.size() > 1) 
         m_snakePositions.pop_back();

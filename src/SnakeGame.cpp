@@ -25,7 +25,7 @@ void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler
     int approx_middleX = (int)GetIndexWidth()/2; // index x
     int approx_middleY = (int)GetIndexHeight()/2; // index y
 
-    m_snake.Init(m_renderer, m_input, 10, approx_middleX, approx_middleY);
+    m_snake.Init(m_renderer, m_input, 4, approx_middleX, approx_middleY);
 
     m_deathMessage.Init(m_renderer, Color(30, 200, 30), window);
 }
