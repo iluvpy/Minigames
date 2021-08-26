@@ -12,11 +12,10 @@ void PongGame::Init(Renderer *renderer, Window *window,InputHandler *inputHandle
 }
 
 void PongGame::Update()  {
-
+	m_ball.Update();
 }
 
 void PongGame::Draw()  {
 	m_backgroundRect.Draw(m_renderer);
-	m_renderer->DrawText(100, 100, "hello Pong :p", PONG_GAME_FONT_SIZE, PONG_GAME_TEXT_COLOR);
 	m_ball.Draw(m_renderer);
 }
