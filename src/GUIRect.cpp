@@ -37,6 +37,11 @@ int GUIRect::GetH() const {
     return m_h;
 }
 
+Rect GUIRect::GetRect() const {
+	return Rect{m_x, m_y, m_w, m_h};
+}
+
+
 bool GUIRect::IsOntop(const Point& pos) {
     return (pos.x >= m_x &&
             pos.x <= m_x+m_w &&

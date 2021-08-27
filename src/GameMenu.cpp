@@ -26,7 +26,7 @@ void GameMenu::InitButtons() {
 }
 
 void GameMenu::InitGames() {
-    m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_DEFAULT_RECT_WIDTH);
+    m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_RECT_WIDTH);
 	m_pongGame.Init(m_renderer, m_window, m_input);
 }
 

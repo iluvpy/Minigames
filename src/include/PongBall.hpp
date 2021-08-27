@@ -2,19 +2,25 @@
 
 #include "Renderer.hpp"
 #include "Window.hpp"
+#include "PongPlayers.hpp"
 
 #define PONG_BALL_RADIUS 15
 #define PONG_BALL_VELOCITY 10
+
+
 class PongBall {
 public:
 
 	void Init(Window *window);
-	void Update();
+	int Update(PongPlayers *players);
+	
+	void CenterAndAddRandomVelocity();
 	void Draw(Renderer *renderer);
 
 private:
+
 	Window *m_window;
-	int m_x, m_y ; // center of sphere
+	float m_x, m_y ; // center of sphere
 	float m_dx, m_dy;
-	int m_radius;
+	float m_radius;
 };

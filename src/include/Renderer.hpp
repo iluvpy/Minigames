@@ -18,7 +18,9 @@ public:
     void Fill(const Color& color, const Window *window);
     void DrawRect(const GUIRect& rect);
 	void DrawCircle(float x, float y, float radius, const Color& color=Color(0, 0, 0));
+	// it is recommended to use the GUIText class if the text needs to change every frame
 	void DrawText(const Point& pos, const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
+	// it is recommended to use the GUIText class if the text needs to change every frame
 	void DrawText(int x, int y,const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
 	Rect GetTextRect(const std::string& text, int fontSize=28);
     void SetColor(const Color& color);

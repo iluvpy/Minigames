@@ -56,13 +56,16 @@ void Renderer::DrawText(const Point& pos, const std::string& text, int fontSize,
 void Renderer::DrawText(int x, int y, const std::string& text, int fontSize, const Color& color) 
 {
 	auto it = m_textCache.find(text);
-	if (it != m_textCache.end()) it->second->DrawText();
+	if (it != m_textCache.end()) 
+		it->second->DrawText();
 	else {
 		// need to use 'new' causes segfault if i dont (and does not draw text)
 		GUIText *gui_text = new GUIText;
 		gui_text->Init(this, x, y, text, DEFAULT_FONT_PATH, fontSize, color);
 		m_textCache[text] = gui_text;
 	}
+	if (m_textCache.size() > 50) 
+		m_textCache.clear();
 }
 
 Rect Renderer::GetTextRect(const std::string& text, int fontSize) {

@@ -6,7 +6,8 @@ Window::Window() {
 
 void Window::Init(const std::string& name) {
     m_rect = {0, 0, 1920, 1080};
-    m_window = SDL_CreateWindow(name.c_str(), m_rect.x, m_rect.y, m_rect.w, m_rect.h, SDL_WINDOW_FULLSCREEN);
+    m_window = SDL_CreateWindow(name.c_str(), m_rect.x, m_rect.y, m_rect.w, m_rect.h, 0);
+	SDL_GetWindowSize(m_window, &m_rect.x, &m_rect.y);
 }
 
 const SDL_Rect Window::GetWindowRect() const {

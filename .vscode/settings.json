@@ -59,7 +59,12 @@
 		"stdexcept": "cpp",
 		"cinttypes": "cpp",
 		"typeinfo": "cpp",
-		"*.inc": "cpp"
+		"*.inc": "cpp",
+		"codecvt": "cpp",
+		"set": "cpp",
+		"unordered_set": "cpp",
+		"iomanip": "cpp",
+		"variant": "cpp"
 	},
     "C_Cpp.errorSquiggles": "Disabled"
 }

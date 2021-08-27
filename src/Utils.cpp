@@ -56,3 +56,7 @@ Color Util::GetSnakeGridRectColor(const SnakeGridRect& rect) {
 float Util::GetClockDifference(const Clock_t& clock1, const Clock_t& clock2) {
     return std::chrono::duration<float>(clock1-clock2).count();
 }
+
+int Util::GetRandomInt(int max, int min) { 
+	return min + (rand() % static_cast<int>(max - min + 1)); 
+}

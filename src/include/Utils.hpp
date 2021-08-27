@@ -20,5 +20,5 @@ namespace Util {
     // returns clock1-clock2 in seconds
     float GetClockDifference(const Clock_t& clock1, const Clock_t& clock2);
     inline int GetKeyCode(const SDL_Event& e) { return e.key.keysym.sym; }
-    inline int GetRandomInt(int max, int min=0) { return rand() % max + min; }
+    int GetRandomInt(int max, int min=0);
 };

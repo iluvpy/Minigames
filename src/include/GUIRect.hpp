@@ -16,6 +16,7 @@ public:
     int GetY() const;
     int GetW() const;
     int GetH() const;
+	Rect GetRect() const;
     bool IsOntop(const Point& pos);
     Color GetColor() const;
     ~GUIRect();

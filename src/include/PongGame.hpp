@@ -4,6 +4,7 @@
 #include "InputHandler.hpp"
 #include "GUIRect.hpp"
 #include "PongBall.hpp"
+#include "PongPlayers.hpp"
 
 #define PONG_GAME_BACKGROUND_COLOR Color(20, 20, 20)
 #define PONG_GAME_TEXT_COLOR Color(255, 255, 255)
@@ -21,7 +22,10 @@ private:
 	Window *m_window;
 	InputHandler *m_input;
 	GUIRect m_backgroundRect;
+	
 	int m_points1, m_points2; // points of player 1 and points of player 2
+	Point m_pointsCounterSize; // width and height of the text counter (used to center text)
 
 	PongBall m_ball;
+	PongPlayers m_players;
 };
