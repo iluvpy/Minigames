@@ -7,7 +7,8 @@ void PongGame::Init(Renderer *renderer, Window *window,InputHandler *inputHandle
 	m_points1 = 0;
 	m_points2 = 0;
 
-	Rect r = m_renderer->GetTextRect("0|0", PONG_GAME_FONT_SIZE);
+	// get the text size of a 3(2 numbers and a '|') char string with PONG_GAME_FONT_SIZE
+	Rect r = m_renderer->GetTextRect("0|0", PONG_GAME_FONT_SIZE); 
 	m_pointsCounterSize.x = r.w;
 	m_pointsCounterSize.y = r.h;
 
@@ -16,16 +17,16 @@ void PongGame::Init(Renderer *renderer, Window *window,InputHandler *inputHandle
 	m_players.Init(m_window);
 }
 
-void PongGame::Update()  {
+void PongGame::Update(Timer *timer)  {
 	int result = m_ball.Update(&m_players);
 	if (result) {
-		if (result == 1)
+		if (result == PONG_PLAYER1) // if player 1 (left) should get the point, else player 2 will
 			m_points1++;
 		else
 			m_points2++;
 		m_ball.CenterAndAddRandomVelocity();
 	}
-	m_players.Update(m_input);
+	m_players.Update(m_input, timer);
 }
 
 void PongGame::Draw()  {

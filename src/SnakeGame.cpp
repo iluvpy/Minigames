@@ -2,7 +2,7 @@
 #include "SnakeFood.hpp"
 #include "Snake.hpp"
 
-#define FOOD_INTERVAL 5.0f
+#define FOOD_INTERVAL 3.5f
 
 
 void SnakeGame::Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int rectWidth) {
@@ -39,15 +39,6 @@ void SnakeGame::Draw() {
         for (const auto& rect : rectLayer) {
             m_renderer->DrawRect(rect.x, rect.y, rect.w, rect.w, Util::GetSnakeGridRectColor(rect));
         }
-    }
-
-    // draw grid
-    for (int yi = 0; yi < m_windowH; yi += m_rectWidth) {
-        m_renderer->DrawRect(0, yi, m_windowW, -1, Color(0, 0, 0));
-    }
-
-    for (int xi = 0; xi < m_windowW; xi += m_rectWidth) {
-        m_renderer->DrawRect(xi, 0, -1, m_windowH, Color(0, 0, 0));
     }
 
     if (!m_snake.IsAlive()) m_deathMessage.Draw();
@@ -97,8 +88,12 @@ int SnakeGame::YtoYIndex(int y) {
 
 bool SnakeGame::Set(int x_index, int y_index, const SnakeRectState& state) {
     if (PosExists(x_index, y_index)) {
-        m_grid[y_index][x_index].state = state;
-        return true;
+		// if grid is on screen ()
+		if (1)
+		{
+			m_grid[y_index][x_index].state = state;
+        	return true;
+		}
     }
     return false;
 }

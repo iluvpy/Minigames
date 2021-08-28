@@ -10,18 +10,21 @@ void PongBall::Init(Window *window) {
 }
 
 void PongBall::CenterAndAddRandomVelocity() {
-	m_x = m_window->GetWidth() / 2 - m_radius;
-	m_y = m_window->GetHeight() / 2 - m_radius;
+	Center();
 
 	m_dx = Util::GetRandomInt(1, 0) ? PONG_BALL_VELOCITY : -PONG_BALL_VELOCITY; 
 	m_dy = Util::GetRandomInt(PONG_BALL_VELOCITY, -PONG_BALL_VELOCITY);
 }
 
+void PongBall::Center() {
+	m_x = m_window->GetWidth() / 2 - m_radius;
+	m_y = m_window->GetHeight() / 2 - m_radius;
+}
 
 int PongBall::Update(PongPlayers *players) {
 
-	Rect left = players->GetLeftRect();
-	Rect right = players->GetRightRect();
+	FRect left = players->GetLeftRect();
+	FRect right = players->GetRightRect();
 	
 	float ydy = m_y + m_dy;
 	float xdx = m_x + m_dx;
@@ -35,15 +38,19 @@ int PongBall::Update(PongPlayers *players) {
 	bool at_left = xdx < left.x + left.w;
 	
 	if (at_left) {
-		if (touching_left)
+		if (touching_left) {
 			m_dx = -m_dx;
+			m_dy += players->GetLeftVelocity() / 2;
+		}
 		else 
 			return PONG_PLAYER2; // player 2 gets point
 	}
 
 	else if (at_right) {
-		if (touching_right)
+		if (touching_right) {
 			m_dx = -m_dx;
+			m_dy += players->GetRightVelocity() / 2;
+		}
 		else
 			return PONG_PLAYER1; // player 1 gets point
 	}

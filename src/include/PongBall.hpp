@@ -15,6 +15,7 @@ public:
 	int Update(PongPlayers *players);
 	
 	void CenterAndAddRandomVelocity();
+	void Center();
 	void Draw(Renderer *renderer);
 
 private:

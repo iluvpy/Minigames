@@ -27,8 +27,18 @@ void Renderer::DrawRect(int x, int y, int w, int h, const Color& color) {
     SDL_RenderFillRect(m_renderer, &r);
 }
 
+void Renderer::DrawRect(const Rect& rect, const Color& color) {
+	DrawRect(rect.x, rect.y, rect.w, rect.h, color);
+}
+
+void Renderer::DrawRect(const FRect& rect, const Color& color) {
+	SetColor(color);
+    SDL_RenderFillRectF(m_renderer, (SDL_FRect*)&rect);
+}
+
+
 void Renderer::DrawRect(const GUIRect& rect) {
-    DrawRect(rect.GetX(), rect.GetY(), rect.GetW(), rect.GetH(), rect.GetColor());
+    DrawRect(rect.GetRect(), rect.GetColor());
 }
 
 void Renderer::DrawCircle(float x, float y, float radius, const Color& color) {

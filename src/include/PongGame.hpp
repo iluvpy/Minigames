@@ -5,6 +5,7 @@
 #include "GUIRect.hpp"
 #include "PongBall.hpp"
 #include "PongPlayers.hpp"
+#include "Timer.hpp"
 
 #define PONG_GAME_BACKGROUND_COLOR Color(20, 20, 20)
 #define PONG_GAME_TEXT_COLOR Color(255, 255, 255)
@@ -14,7 +15,7 @@ class PongGame {
 public:
 
 	void Init(Renderer *renderer, Window *window, InputHandler *inputHandler);
-	void Update();
+	void Update(Timer *timer);
 	void Draw();
 
 private:

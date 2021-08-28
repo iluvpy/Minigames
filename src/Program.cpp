@@ -27,19 +27,19 @@ void Program::Init(const std::string& name) {
     m_window.Init(name);
     m_renderer.Init(m_window.GetWindowPtr());
 
-    m_gameMenu.Init(&m_window, &m_renderer, &m_input);
-
+    m_gameMenu.Init(&m_window, &m_renderer, &m_input, &m_timer);
 }
 
 void Program::Start() {
     // main loop
     while (m_window.isOpen()) {
         Util::Sleep(10);
+		m_timer.Restart();
         m_renderer.Start();
         
         // render here
         m_renderer.Fill(Color(100, 100, 100), &m_window); // draw background
-    
+
         m_gameMenu.Draw();
         
         m_renderer.End();

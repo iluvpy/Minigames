@@ -96,6 +96,12 @@ struct Rect {
     int x, y, w, h;
 };
 
+
+struct FRect {
+    float x, y, w, h;
+};
+
+
 struct SnakeGridRect {
     int x, y, w;
     SnakeRectState state;

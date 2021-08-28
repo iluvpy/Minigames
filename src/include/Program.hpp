@@ -9,6 +9,7 @@
 #include "SnakeGame.hpp"
 #include "InputHandler.hpp"
 #include "GameMenu.hpp"
+#include "Timer.hpp"
 
 class Program {
 public:
@@ -26,4 +27,5 @@ private:
     Renderer m_renderer;
     InputHandler m_input;
     GameMenu m_gameMenu;
+	Timer m_timer;
 };

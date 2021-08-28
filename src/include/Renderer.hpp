@@ -17,7 +17,9 @@ public:
     void Init(SDL_Window *window);
     void Fill(const Color& color, const Window *window);
     void DrawRect(const GUIRect& rect);
-	void DrawCircle(float x, float y, float radius, const Color& color=Color(0, 0, 0));
+    void DrawRect(const Rect& rect, const Color& color=Color());
+    void DrawRect(const FRect& rect, const Color& color=Color());
+	void DrawCircle(float x, float y, float radius, const Color& color=Color());
 	// it is recommended to use the GUIText class if the text needs to change every frame
 	void DrawText(const Point& pos, const std::string& text, int fontSize=28, const Color& color=Color(0, 0, 0));
 	// it is recommended to use the GUIText class if the text needs to change every frame

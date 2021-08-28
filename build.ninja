@@ -27,5 +27,7 @@ build obj/gamebutton.o: cc src/GameButton.cpp
 build obj/ponggame.o: cc src/PongGame.cpp
 build obj/pongball.o: cc src/PongBall.cpp
 build obj/pongplayers.o: cc src/PongPlayers.cpp
+build obj/timer.o: cc src/Timer.cpp
+
 # build client file
-build client: lnk obj/main.o obj/gamemenu.o obj/pongplayers.o obj/pongball.o obj/ponggame.o  obj/gamebutton.o obj/guitext.o obj/guiimage.o obj/deathmessage.o obj/guirect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
+build client: lnk obj/main.o obj/gamemenu.o obj/timer.o obj/pongplayers.o obj/pongball.o obj/ponggame.o  obj/gamebutton.o obj/guitext.o obj/guiimage.o obj/deathmessage.o obj/guirect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o

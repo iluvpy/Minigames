@@ -3,12 +3,13 @@
 #include <filesystem>
 
 
-void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input) {
+void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input, Timer *timer) {
     m_window = window;
     m_renderer = renderer;
     m_input = input;
+	m_timer = timer;
     m_currentGame = CurrentGame::NOGAME;
-
+	
 	InitButtons();
     InitGames();
 }
@@ -18,15 +19,16 @@ void GameMenu::InitButtons() {
 	Color outline(60, 60, 60);
 	int outlineWidth = 5;
 
-	int x = 200;
-	int y = 200;
-	int spacing = 150;
-	m_snakeButton.Init(m_renderer, x, y, "./res/img/snake3.png", outlineWidth, background, outline);
+	int x = m_window->GetWidth() * GAME_BUTTON_STARTX;
+	int y = m_window->GetHeight() * GAME_BUTTON_STARTY;
+	int spacing = m_window->GetWidth() * GAME_BUTTON_SPACING;
+
+	m_snakeButton.Init(m_renderer, x, y, "./res/img/snake.png", outlineWidth, background, outline);
 	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/img/pong.png", outlineWidth, background, outline);
 }
 
 void GameMenu::InitGames() {
-    m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_RECT_WIDTH);
+    m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_RECT_WIDTH * m_window->GetWidth());
 	m_pongGame.Init(m_renderer, m_window, m_input);
 }
 
@@ -55,7 +57,7 @@ void GameMenu::UpdateCurrentGame() {
             m_snakeGame.Update();
             break;
 		case CurrentGame::PONGGAME:
-			m_pongGame.Update();
+			m_pongGame.Update(m_timer);
 			break;
         default:
             break;
