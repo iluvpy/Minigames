@@ -6,7 +6,7 @@
 #include "Timer.hpp"
 
 #define PONG_PLAYERS_WIDTH 0.01f // % of screen width
-#define PONG_PLAYERS_HEIGHT 0.25f // % of screen height
+#define PONG_PLAYERS_HEIGHT 0.35f // % of screen height
 #define PONG_PLAYERS_X 0.05f
 #define PONG_PLAYERS_DRAG 0.8f // friction
 #define PONG_PLAYER1 1

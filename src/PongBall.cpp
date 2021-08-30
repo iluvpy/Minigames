@@ -30,7 +30,7 @@ int PongBall::Update(PongPlayers *players) {
 	float xdx = m_x + m_dx;
 
 	if (ydy > m_window->GetHeight() || ydy <= 0 ) 
-		m_dy = -m_dy;
+		m_dy = -m_dy * PONG_BALL_FRICTION;
 
 	bool touching_right = ydy >= right.y && ydy <= right.y + right.h;
 	bool touching_left = ydy >= left.y && ydy <= left.y + left.h;

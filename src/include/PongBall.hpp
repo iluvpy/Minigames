@@ -6,7 +6,7 @@
 
 #define PONG_BALL_RADIUS 15
 #define PONG_BALL_VELOCITY 10
-
+#define PONG_BALL_FRICTION 0.9f
 
 class PongBall {
 public:
