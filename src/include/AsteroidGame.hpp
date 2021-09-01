@@ -5,6 +5,7 @@
 #include "InputHandler.hpp"
 #include "Timer.hpp"
 #include "GUIRect.hpp"
+#include "AsteroidPlayer.hpp"
 
 #define ASTEROID_BACKGROUND_COLOR Color(30, 30, 30)
 
@@ -18,4 +19,5 @@ private:
 	Window *m_window;
 	InputHandler *m_input;
 	GUIRect m_backgroundRect;
+	AsteroidPlayer m_player;
 };
