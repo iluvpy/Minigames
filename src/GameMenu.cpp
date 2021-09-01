@@ -59,10 +59,10 @@ void GameMenu::UpdateCurrentGame() {
             m_snakeGame.Update();
             break;
 		case CurrentGame::PONGGAME:
-			m_pongGame.Update(m_timer);
+			m_pongGame.Update(m_timer->GetDeltaTime());
 			break;
 		case CurrentGame::ATEROIDGAME:
-			m_asteroidGame.Update(m_timer);
+			m_asteroidGame.Update(m_timer->GetDeltaTime());
         default:
             break;
     }

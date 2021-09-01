@@ -21,21 +21,21 @@ void PongBall::Center() {
 	m_y = m_window->GetHeight() / 2 - m_radius;
 }
 
-int PongBall::Update(PongPlayers *players) {
+int PongBall::Update(PongPlayers *players, float deltaTime) {
 
 	FRect left = players->GetLeftRect();
 	FRect right = players->GetRightRect();
 	
-	float ydy = m_y + m_dy;
-	float xdx = m_x + m_dx;
+	float ydy = m_y + m_dy + PONG_BALL_VELOCITY * deltaTime;
+	float xdx = m_x + m_dx + PONG_BALL_VELOCITY * deltaTime;
 
 	if (ydy > m_window->GetHeight() || ydy <= 0 ) 
 		m_dy = -m_dy * PONG_BALL_FRICTION;
 
 	bool touching_right = ydy >= right.y && ydy <= right.y + right.h;
 	bool touching_left = ydy >= left.y && ydy <= left.y + left.h;
-	bool at_right = xdx > right.x;
-	bool at_left = xdx < left.x + left.w;
+	bool at_right = xdx >= right.x;
+	bool at_left = xdx <= left.x + left.w;
 	
 	if (at_left) {
 		if (touching_left) {
@@ -55,8 +55,8 @@ int PongBall::Update(PongPlayers *players) {
 			return PONG_PLAYER1; // player 1 gets point
 	}
 
-	m_y += m_dy;
-	m_x += m_dx;
+	m_y += m_dy + PONG_BALL_VELOCITY * deltaTime;
+	m_x += m_dx + PONG_BALL_VELOCITY * deltaTime;
 
 	return 0; // no player got any points
 }

@@ -14,6 +14,6 @@ void AsteroidGame::Draw() {
 	m_player.Draw(m_renderer);
 }
 
-void AsteroidGame::Update(Timer *timer) {
-	m_player.Update(timer);
+void AsteroidGame::Update(float deltaTime) {
+	m_player.Update(m_input, deltaTime);
 }

@@ -1,7 +1,7 @@
 #include "GUIImage.hpp"
 
 
-void GUIImage::Init(Renderer *renderer, int x, int y, const std::string& path) {
+void GUIImage::Init(Renderer *renderer, float x, float y, const std::string& path) {
 	m_renderer = renderer;
 	m_rect = {x, y, 0, 0};
 
@@ -12,18 +12,25 @@ void GUIImage::Init(Renderer *renderer, int x, int y, const std::string& path) {
 	m_rect.h = h;
 }
 
-int GUIImage::GetWidth() {
+float GUIImage::GetWidth() {
 	return m_rect.w;
 }
 
-int GUIImage::GetHeight() {
+float GUIImage::GetHeight() {
 	return m_rect.h;
 }
 
-void GUIImage::SetX(int x) {
+float GUIImage::GetX() {
+	return m_rect.x;
+}
+float GUIImage::GetY() {
+	return m_rect.y;
+}
+
+void GUIImage::SetX(float x) {
 	m_rect.x = x;
 }
-void GUIImage::SetY(int y) {
+void GUIImage::SetY(float y) {
 	m_rect.y = y;
 }
 
@@ -34,12 +41,12 @@ void GUIImage::SetColor(const Color& color) {
 }
 
 void GUIImage::Draw() {
-	SDL_RenderCopy(m_renderer->GetRendererPtr(), m_texture, NULL, (SDL_Rect*)&m_rect);
+	SDL_RenderCopyF(m_renderer->GetRendererPtr(), m_texture, NULL, (SDL_FRect*)&m_rect);
 }
 
 
 void GUIImage::AngleDraw(float angle) {
-	SDL_RenderCopyEx(m_renderer->GetRendererPtr(), m_texture, NULL, (SDL_Rect*)&m_rect, angle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyExF(m_renderer->GetRendererPtr(), m_texture, NULL, (SDL_FRect*)&m_rect, angle, NULL, SDL_FLIP_NONE);
 }
 
 GUIImage::~GUIImage() {

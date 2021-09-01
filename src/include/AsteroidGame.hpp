@@ -13,7 +13,7 @@ class AsteroidGame {
 public:
 	void Init(Renderer *renderer, Window *window, InputHandler *input);
 	void Draw();
-	void Update(Timer *timer);
+	void Update(float deltaTime);
 private:
 	Renderer *m_renderer;
 	Window *m_window;

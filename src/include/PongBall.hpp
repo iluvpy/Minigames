@@ -5,15 +5,14 @@
 #include "PongPlayers.hpp"
 
 #define PONG_BALL_RADIUS 10.0f
-#define PONG_BALL_VELOCITY 7.0f
+#define PONG_BALL_VELOCITY 5.0f
 #define PONG_BALL_FRICTION 0.9f
 
 class PongBall {
 public:
 
 	void Init(Window *window);
-	int Update(PongPlayers *players);
-	
+	int Update(PongPlayers *players, float deltaTime);
 	void CenterAndAddRandomVelocity();
 	void Center();
 	void Draw(Renderer *renderer);

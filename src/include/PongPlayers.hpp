@@ -17,7 +17,7 @@ class PongPlayers {
 public:
 
 	void Init(Window *window);
-	void Update(InputHandler *input, Timer *timer);
+	void Update(InputHandler *input, float deltaTime);
 	void Draw(Renderer *renderer);
 	FRect GetRightRect();
 	FRect GetLeftRect();

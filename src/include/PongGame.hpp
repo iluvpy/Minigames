@@ -15,7 +15,7 @@ class PongGame {
 public:
 
 	void Init(Renderer *renderer, Window *window, InputHandler *inputHandler);
-	void Update(Timer *timer);
+	void Update(float deltaTime);
 	void Draw();
 
 private:

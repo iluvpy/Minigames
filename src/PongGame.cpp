@@ -7,7 +7,7 @@ void PongGame::Init(Renderer *renderer, Window *window,InputHandler *inputHandle
 	m_points1 = 0;
 	m_points2 = 0;
 
-	// get the text size of a char string (2 numbers and a '|' with 2 spaces) with PONG_GAME_FONT_SIZE
+	// get the text size 
 	Rect r = m_renderer->GetTextRect("0 | 0", PONG_GAME_FONT_SIZE); 
 	m_pointsCounterSize.x = r.w;
 	m_pointsCounterSize.y = r.h;
@@ -17,8 +17,8 @@ void PongGame::Init(Renderer *renderer, Window *window,InputHandler *inputHandle
 	m_players.Init(m_window);
 }
 
-void PongGame::Update(Timer *timer)  {
-	int result = m_ball.Update(&m_players);
+void PongGame::Update(float deltaTime)  {
+	int result = m_ball.Update(&m_players, deltaTime);
 	if (result) {
 		if (result == PONG_PLAYER1) // if player 1 (left) should get the point, else player 2 will
 			m_points1++;
@@ -26,7 +26,7 @@ void PongGame::Update(Timer *timer)  {
 			m_points2++;
 		m_ball.CenterAndAddRandomVelocity();
 	}
-	m_players.Update(m_input, timer);
+	m_players.Update(m_input, deltaTime);
 }
 
 void PongGame::Draw()  {
@@ -36,5 +36,10 @@ void PongGame::Draw()  {
 
 	std::string points = std::to_string(m_points1) + " | " + std::to_string(m_points2);
 	int center_x = m_window->GetWidth() / 2 - m_pointsCounterSize.x / 2;
+
 	m_renderer->DrawText(center_x, 60, points, PONG_GAME_FONT_SIZE, PONG_GAME_TEXT_COLOR);
+	Rect r = m_renderer->GetTextRect(points, PONG_GAME_FONT_SIZE);
+	m_pointsCounterSize.x = r.w;
+	m_pointsCounterSize.y = r.h;
+
 }
