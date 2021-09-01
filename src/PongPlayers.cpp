@@ -2,12 +2,12 @@
 
 void PongPlayers::Init(Window *window) {
 	m_window = window;
-	int w = m_window->GetWidth() * PONG_PLAYERS_WIDTH;
-	int h = m_window->GetHeight() * PONG_PLAYERS_HEIGHT;
+	int w = PONG_PLAYERS_WIDTH;
+	int h = PONG_PLAYERS_HEIGHT;
 
 	int middle_y = m_window->GetHeight() / 2 - h / 2;
-	m_player1Rect.Init(m_window->GetWidth() * PONG_PLAYERS_X, middle_y, w, h);
-	m_player2Rect.Init(m_window->GetWidth() - m_window->GetWidth() * PONG_PLAYERS_X, middle_y, w, h);
+	m_player1Rect.Init(PONG_PLAYERS_X, middle_y, w, h);
+	m_player2Rect.Init(m_window->GetWidth() - PONG_PLAYERS_X, middle_y, w, h);
 
 	m_player1_dy = 0.0f;
 	m_player2_dy = 0.0f;
@@ -15,7 +15,7 @@ void PongPlayers::Init(Window *window) {
 
 void PongPlayers::Update(InputHandler *input, Timer *timer) {
 	float deltaTime = timer->GetDeltaTime();
-	float speed = PONG_PLAYERS_SPEED * m_window->GetHeight() * deltaTime;
+	float speed = PONG_PLAYERS_SPEED * deltaTime;
 	// handle movement of left player
 	if (input->isPressed(SDLK_w)) {
 		m_player1_dy -= speed;

@@ -4,8 +4,8 @@
 #include "Window.hpp"
 #include "PongPlayers.hpp"
 
-#define PONG_BALL_RADIUS 15
-#define PONG_BALL_VELOCITY 10
+#define PONG_BALL_RADIUS 10.0f
+#define PONG_BALL_VELOCITY 7.0f
 #define PONG_BALL_FRICTION 0.9f
 
 class PongBall {

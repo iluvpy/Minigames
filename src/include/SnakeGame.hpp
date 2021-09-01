@@ -10,7 +10,7 @@
 
 #define SNAKE_GRID_GRAY Color(100, 100, 100)
 #define SNAKE_GRID_APPLE_COLOR Color(200, 100, 100)
-#define SNAKE_GAME_RECT_WIDTH 0.05 // percentage of screen size
+#define SNAKE_GAME_RECT_WIDTH 40 // percentage of screen size
 
 class SnakeGame {
 public:
