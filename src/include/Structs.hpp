@@ -5,8 +5,8 @@
 enum CurrentGame : ubyte {
     SNAKEGAME,
     PONGGAME,
-    TETRISGAME,
-    NOGAME
+	ATEROIDGAME,
+	NOGAME
 };
 
 enum Direction2d : ubyte {

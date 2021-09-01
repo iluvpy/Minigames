@@ -15,21 +15,23 @@ void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input, Tim
 }
 
 void GameMenu::InitButtons() {
-	Color background(100, 100, 100);
-	Color outline(60, 60, 60);
+	Color backgroundColor(100, 100, 100);
+	Color outlineColor(60, 60, 60);
 	int outlineWidth = 5;
 
 	int x = m_window->GetWidth() * GAME_BUTTON_STARTX;
 	int y = m_window->GetHeight() * GAME_BUTTON_STARTY;
 	int spacing = m_window->GetWidth() * GAME_BUTTON_SPACING;
 
-	m_snakeButton.Init(m_renderer, x, y, "./res/img/snake.png", outlineWidth, background, outline);
-	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/img/pong.png", outlineWidth, background, outline);
+	m_snakeButton.Init(m_renderer, x, y, "./res/img/snake.png", outlineWidth, backgroundColor, outlineColor);
+	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/img/pong.png", outlineWidth, backgroundColor, outlineColor);
+	m_asteroidButton.Init(m_renderer, x+=spacing, y, "./res/img/asteroid.png", outlineWidth, backgroundColor, outlineColor);
 }
 
 void GameMenu::InitGames() {
     m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_RECT_WIDTH * m_window->GetWidth());
 	m_pongGame.Init(m_renderer, m_window, m_input);
+	m_asteroidGame.Init(m_renderer, m_window, m_input);
 }
 
 void GameMenu::Draw() {
@@ -59,6 +61,8 @@ void GameMenu::UpdateCurrentGame() {
 		case CurrentGame::PONGGAME:
 			m_pongGame.Update(m_timer);
 			break;
+		case CurrentGame::ATEROIDGAME:
+			m_asteroidGame.Update(m_timer);
         default:
             break;
     }
@@ -73,6 +77,8 @@ void GameMenu::UpdateGameMenu() {
 	m_pongButton.Update(m_input);
 	if (m_pongButton.GetButton().WasReleased()) m_currentGame = CurrentGame::PONGGAME;
 
+	m_asteroidButton.Update(m_input);
+	if (m_asteroidButton.GetButton().WasReleased()) m_currentGame = CurrentGame::ATEROIDGAME;
 }
 
 void GameMenu::DrawCurrentGame() {
@@ -83,6 +89,8 @@ void GameMenu::DrawCurrentGame() {
 		case CurrentGame::PONGGAME:
 			m_pongGame.Draw();
 			break;
+		case CurrentGame::ATEROIDGAME:
+			m_asteroidGame.Draw();
         default:
             break;
     }
@@ -96,6 +104,7 @@ void GameMenu::DrawGameMenu() {
 
 	m_snakeButton.Draw();
 	m_pongButton.Draw();
+	m_asteroidButton.Draw();
 }
 
 

@@ -5,10 +5,14 @@
 #include "InputHandler.hpp"
 #include "GUIButton.hpp"
 #include "Structs.hpp"
+#include "Timer.hpp"
+
+// games
 #include "SnakeGame.hpp"
 #include "GameButton.hpp"
 #include "PongGame.hpp"
-#include "Timer.hpp"
+#include "AsteroidGame.hpp"
+
 
 #define GAME_BUTTON_SPACING 0.1 // % relative to the screen width
 #define GAME_BUTTON_STARTX 0.1 // % relative to the screen width
@@ -36,9 +40,11 @@ private:
     // buttons
     GameButton m_snakeButton;
 	GameButton m_pongButton;
+	GameButton m_asteroidButton;
     // games
     SnakeGame m_snakeGame;
 	PongGame m_pongGame;
+	AsteroidGame m_asteroidGame;
 
 
 };
