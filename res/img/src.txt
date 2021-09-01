@@ -1,2 +1,0 @@
-snake: https://www.flaticon.com/free-icon/snake_3662068?term=snake&page=1&position=9&page=1&position=9&related_id=3662068&origin=search
-pong: 

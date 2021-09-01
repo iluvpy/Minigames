@@ -1,0 +1,3 @@
+snake: https://www.flaticon.com/free-icon/snake_3662068?term=snake&page=1&position=9&page=1&position=9&related_id=3662068&origin=search
+pong: https://www.flaticon.com/free-icon/ping-pong_3069006?term=pong&page=2&position=70&page=2&position=70&related_id=3069006&origin=search
+asteroid: https://www.flaticon.com/free-icon/asteroid_2534240?term=asteroids&page=1&position=47&page=1&position=47&related_id=2534240&origin=search

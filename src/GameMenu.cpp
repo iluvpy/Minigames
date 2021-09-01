@@ -23,9 +23,9 @@ void GameMenu::InitButtons() {
 	int y = m_window->GetHeight() * GAME_BUTTON_STARTY;
 	int spacing = m_window->GetWidth() * GAME_BUTTON_SPACING;
 
-	m_snakeButton.Init(m_renderer, x, y, "./res/img/snake.png", outlineWidth, backgroundColor, outlineColor);
-	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/img/pong.png", outlineWidth, backgroundColor, outlineColor);
-	m_asteroidButton.Init(m_renderer, x+=spacing, y, "./res/img/asteroid.png", outlineWidth, backgroundColor, outlineColor);
+	m_snakeButton.Init(m_renderer, x, y, "./res/icons/snake.png", outlineWidth, backgroundColor, outlineColor);
+	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/icons/pong.png", outlineWidth, backgroundColor, outlineColor);
+	m_asteroidButton.Init(m_renderer, x+=spacing, y, "./res/icons/asteroid.png", outlineWidth, backgroundColor, outlineColor);
 }
 
 void GameMenu::InitGames() {
