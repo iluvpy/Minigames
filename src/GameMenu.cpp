@@ -98,10 +98,6 @@ void GameMenu::DrawCurrentGame() {
 
 void GameMenu::DrawGameMenu() {
 	m_backgroundRect.Draw(m_renderer);
-
-	Rect rect = m_renderer->GetTextRect(GAME_MENU_TEXT, GAME_MENU_TEXT_SIZE);
-	m_renderer->DrawText((int)m_window->GetWidth()/2-rect.w/2, 50, GAME_MENU_TEXT, GAME_MENU_TEXT_SIZE, GAME_MENU_TEXT_COLOR);
-
 	m_snakeButton.Draw();
 	m_pongButton.Draw();
 	m_asteroidButton.Draw();

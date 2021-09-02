@@ -15,12 +15,9 @@
 
 
 #define GAME_BUTTON_SPACING 0.1 // % relative to the screen width
-#define GAME_BUTTON_STARTX 0.1 // % relative to the screen width
-#define GAME_BUTTON_STARTY 0.2 // % relative to the screen width
+#define GAME_BUTTON_STARTX 0.05 // % relative to the screen width
+#define GAME_BUTTON_STARTY 0.1 // % relative to the screen width
 #define GAME_MENU_BACKGROUND_COLOR Color(50, 50, 50)
-#define GAME_MENU_TEXT "Games"
-#define GAME_MENU_TEXT_SIZE 32
-#define GAME_MENU_TEXT_COLOR Color(255, 255, 255)
 
 class GameMenu {
 public:
