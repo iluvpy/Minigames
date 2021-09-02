@@ -45,23 +45,13 @@ void SnakeGame::Draw() {
 
 }
 
-// adds apple to random square on grid every m_interval 
-void SnakeGame::GenApple() {
-    Clock_t now = Util::GetClock();
-    if (Util::GetClockDifference(now, m_lastFoodUpdate) >= FOOD_INTERVAL) {
-        m_lastFoodUpdate = now;
-        m_food.AddNewRandomFood(this);
-    }
-}
-
 void SnakeGame::Update() {
     if (m_snake.IsAlive()) {
         m_snake.Update();
 
-        if (m_food.FoodWasEaten(this)) {
+        if (m_food.NewFoodIfEaten(this)) {
             m_snake.Grow(this);
         }
-        GenApple();
     }
 }
 

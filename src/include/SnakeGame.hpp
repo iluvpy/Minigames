@@ -16,7 +16,6 @@ class SnakeGame {
 public:
     void Init(Renderer *renderer, Window *window, InputHandler *kbHandler, int rectWidth=10);
     void Draw();
-    void GenApple(); // adds apple to random square on grid
     void Update();
     void ClearGrid();
     // returns true on success and false on failure
@@ -35,7 +34,6 @@ private:
     Renderer *m_renderer;
     DeathMessage m_deathMessage;
     InputHandler *m_input;
-    Clock_t m_lastFoodUpdate;
     int m_windowW, m_windowH;
     int m_rectWidth;
 };

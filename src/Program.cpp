@@ -33,7 +33,6 @@ void Program::Init(const std::string& name) {
 void Program::Start() {
     // main loop
     while (m_window.isOpen()) {
-        Util::Sleep(10);
 		m_timer.Restart();
         m_renderer.Start();
         

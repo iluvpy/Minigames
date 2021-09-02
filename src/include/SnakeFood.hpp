@@ -10,9 +10,9 @@ class SnakeFood {
 public:
     void AddNewRandomFood(SnakeGame *game);
     void AddFoodToGame(SnakeGame *game);
-    bool FoodWasEaten(SnakeGame *game);
+    bool NewFoodIfEaten(SnakeGame *game);
 
 private:
-    std::vector<Point> m_foodPositions;
+    Point m_foodPosition;
     
 };

@@ -17,6 +17,11 @@
 #define GAME_BUTTON_SPACING 0.1 // % relative to the screen width
 #define GAME_BUTTON_STARTX 0.1 // % relative to the screen width
 #define GAME_BUTTON_STARTY 0.2 // % relative to the screen width
+#define GAME_MENU_BACKGROUND_COLOR Color(50, 50, 50)
+#define GAME_MENU_TEXT "Games"
+#define GAME_MENU_TEXT_SIZE 32
+#define GAME_MENU_TEXT_COLOR Color(255, 255, 255)
+
 class GameMenu {
 public:
     void Init(Window *window, Renderer *renderer, InputHandler *input, Timer *timer);
@@ -36,7 +41,7 @@ private:
     InputHandler *m_input;
     CurrentGame m_currentGame;
 	Timer *m_timer;
-
+	GUIRect m_backgroundRect;
     // buttons
     GameButton m_snakeButton;
 	GameButton m_pongButton;

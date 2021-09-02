@@ -9,14 +9,14 @@ void GameMenu::Init(Window *window, Renderer *renderer, InputHandler *input, Tim
     m_input = input;
 	m_timer = timer;
     m_currentGame = CurrentGame::NOGAME;
-	
+	m_backgroundRect.Init(0, 0, m_window->GetWidth(), m_window->GetHeight(), GAME_MENU_BACKGROUND_COLOR);
 	InitButtons();
     InitGames();
 }
 
 void GameMenu::InitButtons() {
-	Color backgroundColor(100, 100, 100);
-	Color outlineColor(60, 60, 60);
+	Color backgroundColor = GAME_MENU_BACKGROUND_COLOR;
+	Color outlineColor(80, 80, 80);
 	int outlineWidth = 5;
 
 	int x = m_window->GetWidth() * GAME_BUTTON_STARTX;
@@ -97,10 +97,10 @@ void GameMenu::DrawCurrentGame() {
 }
 
 void GameMenu::DrawGameMenu() {
+	m_backgroundRect.Draw(m_renderer);
 
-	int fontSize = 42;
-	Rect rect = m_renderer->GetTextRect("Game Menu", fontSize);
-	m_renderer->DrawText((int)m_window->GetWidth()/2-rect.w/2, 100, "Game Menu", fontSize);
+	Rect rect = m_renderer->GetTextRect(GAME_MENU_TEXT, GAME_MENU_TEXT_SIZE);
+	m_renderer->DrawText((int)m_window->GetWidth()/2-rect.w/2, 50, GAME_MENU_TEXT, GAME_MENU_TEXT_SIZE, GAME_MENU_TEXT_COLOR);
 
 	m_snakeButton.Draw();
 	m_pongButton.Draw();

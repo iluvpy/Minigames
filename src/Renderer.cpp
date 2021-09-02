@@ -5,7 +5,7 @@
 Renderer::Renderer() {}
 
 void Renderer::Init(SDL_Window *window) {
-    m_renderer = SDL_CreateRenderer(window, 0, 0);
+    m_renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_PRESENTVSYNC);
 }
 
 void Renderer::Start() {

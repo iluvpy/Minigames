@@ -10,21 +10,17 @@ void SnakeFood::AddNewRandomFood(SnakeGame *game) {
         position.y = Util::GetRandomInt(game->GetIndexHeight());
         tries++;
     } while (game->Get(position.x, position.y) != SnakeRectState::Grid && tries < 10);
-    m_foodPositions.push_back(position);
+    m_foodPosition = position;
 }
 
 void SnakeFood::AddFoodToGame(SnakeGame *game) {
-    for (const auto& pos : m_foodPositions) {
-        game->Set(pos.x, pos.y, SnakeRectState::Food);
-    }
+    game->Set(m_foodPosition.x, m_foodPosition.y, SnakeRectState::Food);
 }
 
-bool SnakeFood::FoodWasEaten(SnakeGame *game) {
-    for (auto it = m_foodPositions.begin(); it != m_foodPositions.end(); it++) {
-        if (game->Get(it->x, it->y) == SnakeRectState::SnakeSection) {
-            m_foodPositions.erase(it);
-            return true;
-        }
-    }
-    return false;
+bool SnakeFood::NewFoodIfEaten(SnakeGame *game) {
+    if (game->Get(m_foodPosition.x, m_foodPosition.y) != SnakeRectState::Food) {
+		AddNewRandomFood(game);
+		return true;
+	}
+	return false;
 } 
