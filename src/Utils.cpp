@@ -35,6 +35,9 @@ float Util::toRad(float angle) {
 	return M_PI / 180 * angle; 
 }
 
+float Util::toDeg(float angle) {
+    return 180 / M_PI * angle;
+}
 
 
 Color Util::GetSnakeGridRectColor(const SnakeGridRect& rect) {
