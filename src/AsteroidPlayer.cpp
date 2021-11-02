@@ -10,9 +10,15 @@ void AsteroidPlayer::Init(Renderer *renderer, Window *window) {
 	m_playerImg.Init(renderer, 0, 0, "./res/img/arrow.png");
 	m_playerImg.SetX(m_window->GetWidth() / 2 - m_playerImg.GetWidth() / 2);
 	m_playerImg.SetY(m_window->GetHeight() / 2 - m_playerImg.GetHeight() / 2);
+	m_bullets.Init(m_window);
 }
 
 void AsteroidPlayer::Update(InputHandler *input, float deltaTime) {
+
+	if (input->isPressed(SDLK_SPACE)) {
+		m_bullets.AddBullet(FPoint{m_playerImg.GetX(), m_playerImg.GetY()}, m_angle - 90.0f);
+	}
+
 	if (input->isPressed(SDLK_w)) {
 		m_dy--;
 	}
@@ -58,8 +64,11 @@ void AsteroidPlayer::Update(InputHandler *input, float deltaTime) {
 	if (m_angle > 360.0f) m_angle = 0.0f;
 	else if (m_angle <= 0.0f) m_angle = 360.0f;
 
+	m_bullets.Update(deltaTime);
+
 }
 
 void AsteroidPlayer::Draw(Renderer *renderer) {
 	m_playerImg.AngleDraw(m_angle);
+	m_bullets.Draw(renderer);
 }

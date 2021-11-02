@@ -39,6 +39,21 @@ int Window::GetHeight() const {
     return m_rect.h;
 }
 
+bool Window::IsOnWindow(const FPoint& point) {
+	return point.x <= m_rect.w &&
+		   point.x >= 0 &&
+		   point.y <= m_rect.h &&
+		   point.y >= 0;
+}
+
+bool Window::IsOnWindow(const Point& point) {
+	return point.x <= m_rect.w &&
+		   point.x >= 0 &&
+		   point.y <= m_rect.h &&
+		   point.y >= 0;
+}
+
+
 Window::~Window() {
     SDL_DestroyWindow(m_window);
 }

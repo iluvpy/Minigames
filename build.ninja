@@ -30,6 +30,7 @@ build obj/pongplayers.o: cc src/PongPlayers.cpp
 build obj/timer.o: cc src/Timer.cpp
 build obj/asteroidgame.o: cc src/AsteroidGame.cpp
 build obj/asteroidplayer.o: cc src/AsteroidPlayer.cpp
+build obj/asteroidbullets.o: cc src/AsteroidBullets.cpp
 
 # build client file
-build client: lnk obj/main.o obj/gamemenu.o obj/asteroidplayer.o obj/asteroidgame.o obj/timer.o obj/pongplayers.o obj/pongball.o obj/ponggame.o  obj/gamebutton.o obj/guitext.o obj/guiimage.o obj/deathmessage.o obj/guirect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o
+build client: lnk obj/main.o obj/gamemenu.o obj/asteroidbullets.o obj/asteroidplayer.o obj/asteroidgame.o obj/timer.o obj/pongplayers.o obj/pongball.o obj/ponggame.o  obj/gamebutton.o obj/guitext.o obj/guiimage.o obj/deathmessage.o obj/guirect.o obj/guibutton.o obj/inputhandler.o obj/snake.o obj/snakefood.o obj/snakegame.o obj/utils.o obj/color.o obj/window.o obj/program.o obj/renderer.o

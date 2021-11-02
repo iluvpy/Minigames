@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+#include "Structs.hpp"
 #include "Types.hpp"
 
 class Window {
@@ -17,6 +18,8 @@ public:
     int GetHeight() const;
     SDL_Event GetEvent() const;
     SDL_Window *GetWindowPtr();
+	bool IsOnWindow(const FPoint& point);
+	bool IsOnWindow(const Point& point);
     ~Window();
 private:
 

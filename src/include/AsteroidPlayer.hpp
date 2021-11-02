@@ -5,6 +5,7 @@
 #include "InputHandler.hpp"
 #include "Timer.hpp"
 #include "GUIImage.hpp"
+#include "AsteroidBullets.hpp"
 
 #define ASTEROID_PLAYER_COLOR Color(255, 255, 255)
 #define ASTEROID_PLAYER_DRAG 0.9f
@@ -18,6 +19,7 @@ public:
 private:
 	Window *m_window;
 	GUIImage m_playerImg;
+	AsteroidBullets m_bullets;
 	float m_angle, m_dangle;
 	float m_dy;
 	bool m_isAlive;
