@@ -26,10 +26,10 @@ void AsteroidPlayer::Update(InputHandler *input, float deltaTime) {
 		m_dy++;
 	}
 
-	if (input->isPressed(SDLK_LEFT)) {
+	if (input->isPressed(SDLK_LEFT) || input->isPressed(SDLK_a)) {
 		m_dangle -= 0.5f;
 	}
-	if (input->isPressed(SDLK_RIGHT)) {
+	if (input->isPressed(SDLK_RIGHT) || input->isPressed(SDLK_d)) {
 		m_dangle += 0.5f;
 	}
 
@@ -44,16 +44,18 @@ void AsteroidPlayer::Update(InputHandler *input, float deltaTime) {
 
 		int win_w = m_window->GetWidth();
 		int win_h = m_window->GetHeight();
+		float p_w = m_playerImg.GetWidth();
+		float p_h = m_playerImg.GetHeight();
 		float distance_to_screen = 1.0f;
 		if (p.x > win_w)
 			m_playerImg.SetX(distance_to_screen);
-		else if (p.x < 0.0f)
-			m_playerImg.SetX(win_w - distance_to_screen);
+		else if (p.x + p_w < 0.0f)
+			m_playerImg.SetX(win_w + distance_to_screen);
 		else 
 			m_playerImg.SetX(p.x);
 		if (p.y > win_h)
 			m_playerImg.SetY(distance_to_screen);
-		else if (p.y < 0.0f)
+		else if (p.y + p_h < 0.0f)
 			m_playerImg.SetY(win_h - distance_to_screen);
 		else 
 			m_playerImg.SetY(p.y);

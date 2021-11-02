@@ -5,7 +5,7 @@
 #include "Renderer.hpp"
 #include "Structs.hpp"
 
-#define ASTEROID_BULLET_SPEED 150
+#define ASTEROID_BULLET_SPEED 350
 #define ASTEROID_BULLET_WIDTH 5
 
 class Bullet{
