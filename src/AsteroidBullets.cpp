@@ -16,7 +16,6 @@ void AsteroidBullets::Update(float deltaTime) {
 		bullet.Update(m_window, deltaTime);
 		if (bullet.ShouldDelete()) {
 			m_bullets.erase(it);
-			std::cout << "deleted bullet!!\n";
 		}
 		it++;
 	}

@@ -5,8 +5,10 @@
 #include "GUIRect.hpp"
 #include "InputHandler.hpp"
 #include "Color.hpp"
+#include "TictactoeBoard.hpp"
 
-#define TIC_TAC_TOE_BACKGROUND_COLOR Color(21, 22, 24)
+#define TIC_TAC_TOE_BACKGROUND_COLOR Color(51, 52, 54)
+
 
 class TictactoeGame {
 public:
@@ -18,4 +20,6 @@ private:
 	Window *m_window;
 	InputHandler *m_input;
 	GUIRect m_backgroundRect;
+	TictactoeBoard m_board;
+
 };

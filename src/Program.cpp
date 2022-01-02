@@ -31,6 +31,7 @@ void Program::Init(const std::string& name) {
 }
 
 void Program::Start() {
+    std::cout << "starting...\n"; 
     // main loop
     while (m_window.isOpen()) {
 		m_timer.Restart();
