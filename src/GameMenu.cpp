@@ -26,12 +26,14 @@ void GameMenu::InitButtons() {
 	m_snakeButton.Init(m_renderer, x, y, "./res/icons/snake.png", outlineWidth, backgroundColor, outlineColor);
 	m_pongButton.Init(m_renderer, x+=spacing, y, "./res/icons/pong.png", outlineWidth, backgroundColor, outlineColor);
 	m_asteroidButton.Init(m_renderer, x+=spacing, y, "./res/icons/asteroid.png", outlineWidth, backgroundColor, outlineColor);
+    m_tictactoeButton.Init(m_renderer, x+=spacing, y, "./res/icons/tic-tac-toe.png", outlineWidth, backgroundColor, outlineColor);
 }
 
 void GameMenu::InitGames() {
     m_snakeGame.Init(m_renderer, m_window, m_input, SNAKE_GAME_RECT_WIDTH);
 	m_pongGame.Init(m_renderer, m_window, m_input);
 	m_asteroidGame.Init(m_renderer, m_window, m_input);
+    m_tictactoeGame.Init(m_renderer, m_window, m_input);
 }
 
 void GameMenu::Draw() {
@@ -63,6 +65,9 @@ void GameMenu::UpdateCurrentGame() {
 			break;
 		case CurrentGame::ATEROIDGAME:
 			m_asteroidGame.Update(m_timer->GetDeltaTime());
+        case CurrentGame::TICTACTOEGAME:
+            m_tictactoeGame.Update(m_timer->GetDeltaTime());
+            break;
         default:
             break;
     }
@@ -79,6 +84,9 @@ void GameMenu::UpdateGameMenu() {
 
 	m_asteroidButton.Update(m_input);
 	if (m_asteroidButton.GetButton().WasReleased()) m_currentGame = CurrentGame::ATEROIDGAME;
+
+    m_tictactoeButton.Update(m_input);
+    if (m_tictactoeButton.GetButton().WasReleased()) m_currentGame = CurrentGame::TICTACTOEGAME;
 }
 
 void GameMenu::DrawCurrentGame() {
@@ -91,6 +99,10 @@ void GameMenu::DrawCurrentGame() {
 			break;
 		case CurrentGame::ATEROIDGAME:
 			m_asteroidGame.Draw();
+            break;
+        case CurrentGame::TICTACTOEGAME:
+            m_tictactoeGame.Draw();
+            break;
         default:
             break;
     }
@@ -101,6 +113,7 @@ void GameMenu::DrawGameMenu() {
 	m_snakeButton.Draw();
 	m_pongButton.Draw();
 	m_asteroidButton.Draw();
+    m_tictactoeButton.Draw();
 }
 
 

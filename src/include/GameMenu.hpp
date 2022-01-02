@@ -12,6 +12,7 @@
 #include "GameButton.hpp"
 #include "PongGame.hpp"
 #include "AsteroidGame.hpp"
+#include "TictactoeGame.hpp"
 
 
 #define GAME_BUTTON_SPACING 0.1 // % relative to the screen width
@@ -43,10 +44,12 @@ private:
     GameButton m_snakeButton;
 	GameButton m_pongButton;
 	GameButton m_asteroidButton;
+    GameButton m_tictactoeButton;
     // games
     SnakeGame m_snakeGame;
 	PongGame m_pongGame;
 	AsteroidGame m_asteroidGame;
+    TictactoeGame m_tictactoeGame;
 
 
 };

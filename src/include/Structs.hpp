@@ -6,6 +6,7 @@ enum CurrentGame : ubyte {
     SNAKEGAME,
     PONGGAME,
 	ATEROIDGAME,
+    TICTACTOEGAME,
 	NOGAME
 };
 
