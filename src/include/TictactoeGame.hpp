@@ -6,6 +6,7 @@
 #include "InputHandler.hpp"
 #include "Color.hpp"
 #include "TictactoeBoard.hpp"
+#include "TictactoeTurnButton.hpp"
 
 #define TIC_TAC_TOE_BACKGROUND_COLOR Color(51, 52, 54)
 
@@ -21,5 +22,8 @@ private:
 	InputHandler *m_input;
 	GUIRect m_backgroundRect;
 	TictactoeBoard m_board;
+	TictactoeTurnButton m_turnO;
+	TictactoeTurnButton m_turnX;
+	bool m_turn;
 
 };
