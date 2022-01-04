@@ -9,6 +9,7 @@ void TictactoeTurnButton::Init(int x, int y, TurnButton button_type, Renderer *r
         img_path += "turnX.png";
     m_image.Init(m_renderer, x, y, img_path);
     m_backgroundRect.Init(x, y, m_image.GetWidth(), m_image.GetHeight(), backgroundColor);
+    m_button.Init(m_backgroundRect);
     m_outlineRect.Init(x-TTTT_BUTTON_OUTLINE_WIDTH, 
                        y-TTTT_BUTTON_OUTLINE_WIDTH, 
                        m_image.GetWidth()+TTTT_BUTTON_OUTLINE_WIDTH*2,
@@ -18,7 +19,11 @@ void TictactoeTurnButton::Init(int x, int y, TurnButton button_type, Renderer *r
 }
 
 void TictactoeTurnButton::Update(InputHandler *input) {
-    m_focused = m_backgroundRect.IsOntop(input->GetMousePos());
+    m_button.Update(input);
+    if (m_button.WasReleased()) {
+        m_focused = !m_focused;
+    }
+    
 }
 
 void TictactoeTurnButton::Draw() {

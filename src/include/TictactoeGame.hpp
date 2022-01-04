@@ -25,5 +25,6 @@ private:
 	TictactoeTurnButton m_turnO;
 	TictactoeTurnButton m_turnX;
 	bool m_turn;
+	bool m_game_started;
 
 };
