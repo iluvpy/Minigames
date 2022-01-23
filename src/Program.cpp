@@ -26,7 +26,6 @@ void Program::Init(const std::string& name) {
     InitSDL();
     m_window.Init(name);
     m_renderer.Init(m_window.GetWindowPtr());
-
     m_gameMenu.Init(&m_window, &m_renderer, &m_input, &m_timer);
 }
 

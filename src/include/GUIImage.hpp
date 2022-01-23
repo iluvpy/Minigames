@@ -7,7 +7,6 @@
 
 class GUIImage {
 public:
-
 	void Init(Renderer *renderer, float x, float y, const std::string& path);
 	void Draw();
 	void AngleDraw(float angle);
@@ -18,10 +17,11 @@ public:
 	void SetX(float x);
 	void SetY(float y);
 	void SetColor(const Color& color);
+	SDL_Texture* GetTexture() const;
+
 	~GUIImage();
 private:
 	Renderer *m_renderer;
 	SDL_Texture *m_texture;
-
 	FRect m_rect;
 };

@@ -12,6 +12,11 @@ void GUIImage::Init(Renderer *renderer, float x, float y, const std::string& pat
 	m_rect.h = h;
 }
 
+SDL_Texture* GUIImage::GetTexture() const {
+	return m_texture;
+}
+
+
 float GUIImage::GetWidth() {
 	return m_rect.w;
 }

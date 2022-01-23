@@ -8,6 +8,12 @@ void Window::Init(const std::string& name) {
     m_rect = {0, 0, 1280, 720};
     m_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_rect.w, m_rect.h, 0);
 	SDL_GetWindowSize(m_window, &m_rect.x, &m_rect.y);
+    SetWindowIcon(WINDOW_ICON_PATH);
+}
+
+void Window::SetWindowIcon(std::string iconPath) {
+    SDL_Surface *surface = IMG_Load(&iconPath.front());
+    SDL_SetWindowIcon(m_window, surface);
 }
 
 const SDL_Rect Window::GetWindowRect() const {
