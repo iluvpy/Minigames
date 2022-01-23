@@ -14,6 +14,7 @@ void Window::Init(const std::string& name) {
 void Window::SetWindowIcon(std::string iconPath) {
     SDL_Surface *surface = IMG_Load(&iconPath.front());
     SDL_SetWindowIcon(m_window, surface);
+    SDL_FreeSurface(surface);
 }
 
 const SDL_Rect Window::GetWindowRect() const {
