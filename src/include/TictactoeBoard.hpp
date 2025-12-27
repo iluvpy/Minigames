@@ -7,7 +7,7 @@
 #include <array>
 
 // board width and height
-#define BOARD_WH 4 
+#define BOARD_WH 3
 
 #define TIC_TAC_TOE_BOARD_COLOR Color(101, 102, 104)
 #define BOARD_SPACING 128 // size of icons
