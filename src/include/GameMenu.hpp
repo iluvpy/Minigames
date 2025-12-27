@@ -50,6 +50,4 @@ private:
 	PongGame m_pongGame;
 	AsteroidGame m_asteroidGame;
     TictactoeGame m_tictactoeGame;
-
-
 };

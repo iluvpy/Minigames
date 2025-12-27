@@ -47,9 +47,6 @@ void PongPlayers::Update(InputHandler *input, float deltaTime) {
 		m_player2Rect.SetY(p2_y);
 	else 
 		m_player2_dy = 0.0f;
-
-
-
 }	
 
 void PongPlayers::Draw(Renderer *renderer) {

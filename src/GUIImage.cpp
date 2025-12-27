@@ -16,7 +16,6 @@ SDL_Texture* GUIImage::GetTexture() const {
 	return m_texture;
 }
 
-
 float GUIImage::GetWidth() {
 	return m_rect.w;
 }

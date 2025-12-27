@@ -22,8 +22,8 @@ private:
 	InputHandler *m_input;
 	GUIRect m_backgroundRect;
 	TictactoeBoard m_board;
-	TictactoeTurnButton m_turnO;
-	TictactoeTurnButton m_turnX;
+	TictactoeTurnButton m_turnOButton;
+	TictactoeTurnButton m_turnXButton;
 	bool m_turn;
 	bool m_game_started;
 

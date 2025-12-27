@@ -36,11 +36,10 @@ void Program::Start() {
 		m_timer.Restart();
         m_renderer.Start();
         
-        // render here
         m_renderer.Fill(Color(100, 100, 100), &m_window); // draw background
-
+        // render here
         m_gameMenu.Draw();
-        
+          
         m_renderer.End();
 
         HandleEvents();

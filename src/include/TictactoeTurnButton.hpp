@@ -18,7 +18,7 @@ public:
     void Init(int x, int y, TurnButton button_type, Renderer *renderer, Color backgroundColor);
     void Update(InputHandler *input);
     void Draw();
-
+    bool IsFocused() const;
 private:
 
     GUIImage m_image;

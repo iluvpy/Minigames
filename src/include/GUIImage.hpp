@@ -18,7 +18,6 @@ public:
 	void SetY(float y);
 	void SetColor(const Color& color);
 	SDL_Texture* GetTexture() const;
-
 	~GUIImage();
 private:
 	Renderer *m_renderer;

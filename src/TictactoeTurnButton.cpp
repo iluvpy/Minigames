@@ -33,4 +33,8 @@ void TictactoeTurnButton::Draw() {
     m_image.Draw();
 }
 
+bool TictactoeTurnButton::IsFocused() const {
+    return m_focused; 
+}
+
 
